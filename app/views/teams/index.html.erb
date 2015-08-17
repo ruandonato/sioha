@@ -1,0 +1,4 @@
+<%= link_to 'Criar Time', new_team_path, class: "btn btn-primary" %>
+<% @teams.each do |f| %>
+  <%= link_to "#{f.name}", f %>
+<% end %>

@@ -4,6 +4,7 @@
   </div>
 
   <ul class="nav navbar-nav">
+    <li><%= link_to 'Times', teams_path %></li>
     <% if signed_in? %>
       <li><%= link_to "#{current_user.name}", current_user %></li>
       <li><%= link_to 'Deslogar', signout_path, method: :delete %></li>
