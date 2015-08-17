@@ -1,0 +1,28 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$color-primary-0: #236267;  // Main Primary color */
+$color-primary-1: #E7E7E7;
+$color-primary-2: #649195;
+$color-primary-3: #01353A;
+$color-primary-4: #000B0C;
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(space.ttf);
+}
+
+ul {
+  background: $color-primary-4;
+}
+
+.testefont {
+  font-family: myFirstFont;
+  background: $color-primary-4;
+
+  #teste {
+    color: $color-primary-2;
+  }
+  color: $color-primary-3;
+}
+
