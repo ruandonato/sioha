@@ -1,20 +1,20 @@
 # Documento de Estilo - Sioha
 
 ## Sumário
-1. Introdução
-2. Inspirações para os padrões
-3. Indentação e padrões de texto
-4. Métodos
-5. Strings
-6. Routes
-7. Hashs
-8. Curly Braces (Chaves)
-9. Arrays (Colchetes)
-9. Migrates (Migrações)
-10. Estrutura das classes
-11. Métodos e atributos privados (Private)
-12. Estilo do HTML
-13. Estilo do SASS/CSS
+1. [Introdução](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#1-introdução)
+2. [Inspirações para os padrões](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#2-inspirações-para-os-padrões)
+3. [Indentação e padrões de texto](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#3-indentação-e-padrões-de-texto)
+4. [Métodos](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#4-métodos)
+5. [Strings](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#5-strings)
+6. [Routes](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#6-routes)
+7. [Hashs](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#7-hashs)
+8. [Curly Braces (Chaves)](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#8-curly-braces-chaves)
+9. [Arrays (Colchetes)](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#9-arrays-colchetes)
+10. [Migrates (Migrações)](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#10-migrates-migrações)
+11. [Estrutura das classes](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#11-estrutura-das-classes)
+12. [Métodos e atributos privados (Private)](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#12-métodos-e-atributos-privados-private)
+13. [Estilo do HTML](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#13-estilo-do-html)
+14. [Estilo do SASS/CSS](https://github.com/SiohaTecProg/sioha/blob/master/code_stylesheet.md#14-estilo-do-sasscss)
 
 ## 1. Introdução
 Em um projeto de software, independente de sua magnitude, é ideal que ele seja construído da melhor maneira possível. Dentre as diversas coisas 
