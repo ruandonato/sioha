@@ -5,7 +5,7 @@ include SessionsHelper
 RSpec.describe SessionsHelper, :type => :helper do
   
   before do 
-    @user = User.new(login: 'sanjana@gmail.com', password: 'sanjana123', 
+    @user = User.new(email: 'sanjana@gmail.com', password: 'sanjana123', 
                                     password_confirmation: 'sanjana123')
     @user.save
   end
