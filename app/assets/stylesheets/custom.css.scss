@@ -7,23 +7,132 @@ $color-primary-2: #649195;
 $color-primary-3: #01353A;
 $color-primary-4: #000B0C;
 
+/* custom fonts */
 @font-face {
-  font-family: myFirstFont;
+  font-family: Space;
   src: url(space.ttf);
 }
 
-ul {
-  background: $color-primary-4;
+/* page */
+.page {
+  background: $color-primary-1;
 }
 
-.testefont {
-  font-family: myFirstFont;
-  background: $color-primary-4;
+/* footer */
+.footer.navbar-fixed-bottom {
+  .container {
+    .row {
+      background: $color-primary-3;
+      margin-left: 5px;
+      margin-right: 5px;
+      border-radius: 5px;
+      // border: 1px solid $color-primary-0;
 
-  #teste {
-    color: $color-primary-2;
+      div {
+        ul {
+          .attention-footer {
+            color: $color-primary-4;
+            font-size: 16px;
+            font-weight: 900;
+          }
+
+          list-style-type: none;
+          li {
+            a {
+              color: $color-primary-1;
+              font-weight: 900;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
   }
-  color: $color-primary-3;
+}
+
+.footer.navbar-fixed-bottom {
+  background: $color-primary-0;
+}
+
+#logo {
+  font-family: Space;
+  color: $color-primary-1;
+  font-size: 40px;
+  margin-left: 5px;
+
+  font-weight: 900;
+  &:hover {
+    color: white;
+    border-radius: 9px;
+    background: $color-primary-3;
+  }
+}
+
+body {
+  height: 100%;
+  background: $color-primary-1;
+}
+
+/* content */
+.content {
+  background: white;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: 1px solid #fff;
+}
+
+/* _header */
+.navbar.navbar-default {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  background: $color-primary-0;
+  color: $color-primary-1;
+
+  .navbar-header {
+    #logo {
+      font-family: Space;
+      color: $color-primary-1;
+      font-size: 40px;
+      margin-left: 5px;
+
+      font-weight: 900;
+      &:hover {
+        color: white;
+        border-radius: 9px;
+        background: $color-primary-3;
+      }
+    }
+  }
+
+  .nav.navbar-nav {
+    li {
+      a {
+        font-weight: 900;
+        color: $color-primary-1;
+        &:hover {
+          color: white;
+          border-radius: 9px;
+          background: $color-primary-3;
+        }
+      }
+    }
+  }
+
+  .nav.navbar-nav.navbar-right {
+    margin-right: 0;
+    li {
+      a {
+        &:hover {
+          color: white;
+          border-radius: 9px;
+          background: $color-primary-3;
+        }
+      }
+    }
+    padding: 0;
+  }
 }
 
 /* users - new */

@@ -1,10 +1,13 @@
 <nav class="navbar navbar-default">
   <div class="navbar-header">
-    <a class="navbar-brand" href="/", id="teste">SIOHA</a>
+    <a class="navbar-brand" href="/", id="logo">SIOHA</a>
   </div>
 
-  <ul class="nav navbar-nav">
+  <ul class="nav navbar-nav navbar-left">
     <li><%= link_to 'Times', teams_path %></li>
+  </ul>
+
+  <ul class="nav navbar-nav navbar-right">
     <% if signed_in? %>
       <li><%= link_to "#{current_user.name}", current_user %></li>
       <li><%= link_to 'Deslogar', signout_path, method: :delete %></li>
@@ -14,3 +17,4 @@
     <% end %>
   </ul>
 </nav>
+
