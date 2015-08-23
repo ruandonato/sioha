@@ -16,7 +16,6 @@ RSpec.describe SessionsController, :type => :controller do
         subject { post :create, :session => { :email => 'sanjana@gmail.com', :password => 'sanjana123' }}
         it "should log in user with correct email and password" do
           subject
-          expect(session[:user_id]).to be(@user.id)
           expect(response).to redirect_to(root_path)
         end
       end
