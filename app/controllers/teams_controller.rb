@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
  
- before_action :require_login
+  before_action :require_login
  
   def new 
     @team = Team.new
@@ -29,4 +29,5 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(:name, :description, :user_id)
   end
+
 end
