@@ -1,18 +1,18 @@
-<div class="users-new">  
+<div class='users-new'>  
   <%= form_for @user do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <%= f.label :name, "Nome" %>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name, class: 'form-control' %>
 
-    <%= f.label :email, "E-mail" %>
-    <%= f.text_field :email, class: "form-control" %>
+    <%= f.label :email, 'E-mail' %>
+    <%= f.text_field :email, class: 'form-control' %>
 
-    <%= f.label :password, "Senha" %>
-    <%= f.password_field :password, class: "form-control" %>
+    <%= f.label :password, 'Senha' %>
+    <%= f.password_field :password, class: 'form-control' %>
 
-    <%= f.label :password_confirmation, "Confirmação de Senha" %>
-    <%= f.password_field :password_confirmation, class: "form-control" %>
+    <%= f.label :password_confirmation, 'Confirmação de Senha' %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-    <center><%= f.submit class: "btn btn-primary" %></center>
+    <center><%= f.submit class: 'btn btn-primary' %></center>
   <% end %>
 </div>

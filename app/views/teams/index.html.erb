@@ -1,9 +1,9 @@
 
-<div class="teams">
-  <%= link_to 'Criar Time', new_team_path, class: "btn btn-primary" %>
+<div class='teams'>
+  <%= link_to 'Criar Time', new_team_path, class: 'btn btn-primary' %>
 
   <% @teams.each do |f| %>
-    <span class="show-team-block">
+    <span class='show-team-block'>
       <h3>Time: <%= link_to "#{f.name}", f %></h3>
       <h3>Descrição: <%= f.description %></h3>
       <h3>Dono: <%= link_to "#{f.user.name}", f.user %></h3>
