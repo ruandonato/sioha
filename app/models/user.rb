@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, maximum: 100 }
   validates :name, length: { maximum: 50 }
   valid_email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, :format => { with: valid_email_regex }
-  validates :email, :uniqueness => true
+  validates :email, format: { with: valid_email_regex }
+  validates :email, uniqueness: true
   has_secure_password
 
   def User.new_remember_token
