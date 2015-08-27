@@ -5,6 +5,7 @@ class Team < ActiveRecord::Base
   belongs_to :user
   validates :name, length: { minimum: 6, maximum: 50 }
   validates :description, length: { minimum: 10, maximum: 50 }
+  validates :name, uniqueness: true
 
   def pending_invites
     @invites = Invite.where(team: self, pending: true)

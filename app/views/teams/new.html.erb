@@ -1,9 +1,9 @@
 <%= form_for @team do |f| -%>
   <%= render 'shared/error_messages', object: f.object %>
-  <%= f.label :name, "Name" %>
+  <%= f.label :name, 'Name' %>
   <%= f.text_field :name %>
 
-  <%= f.label :description, "Description" %>
+  <%= f.label :description, 'Description' %>
   <%= f.text_field :description %>
 
   <%= f.submit %>
