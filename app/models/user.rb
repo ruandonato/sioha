@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
+  has_many :invites
   has_many :teams
   before_create :create_remember_token
   validates :password, length: { minimum: 6, maximum: 100 }
@@ -15,6 +16,26 @@ class User < ActiveRecord::Base
 
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def self.search(keyword, filter = nil)
+    if keyword
+      aux = User.where("name LIKE ?", "%#{keyword}%")
+      puts "aux: #{aux}"
+    else
+      aux = User.all
+    end
+
+    return aux
+  end
+
+  def pending_to?(team)
+    invite = Invite.find_by(team: team, user: self)
+    if invite
+      invite.pending # true = invited but not accepted, false = invited and accepted
+    else
+      nil # nil = the invite isn't even created
+    end
   end
 
   private

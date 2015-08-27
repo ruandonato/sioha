@@ -1,0 +1,9 @@
+<% if current_user == @team.user %>
+  <h1>Convidar Pessoas</h1>
+  <%= form_tag("/teams/#{@team.id}/invite", method: "get") do %>
+    <%= text_field_tag :keyword, params[:keyword], class: "search-text-field", placeholder: "nome do usuário" %>
+    <%= submit_tag "Buscar", :name => "Busca", class: "search-button" %>
+  <% end %>
+
+  <h1>Convites pendentes</h1>
+<% end %>

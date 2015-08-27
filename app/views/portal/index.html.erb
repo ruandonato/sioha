@@ -1,3 +1,30 @@
 <div class="container">
-    <h1>Bem-vindo!</h1>
+  <h1>Bem-vindo!</h1>
 </div>
+
+<% if signed_in? %>
+  <h1>Atenção, você tem convites pendentes!</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>Time</td>
+        <td>Dono</td>
+        <td>Descrição</td>
+        <td>Aceitar</td>
+        <td>Recusar</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @invites.each do |i| %>
+        <tr>
+          <td><%= link_to "#{i.team.name}", i.team %></td>
+          <td><%= link_to "#{i.team.user.name}", i.team.user.name %></td>
+          <td><%= link_to "#{i.team.description}", i.team %></td>
+          <td><%= link_to '', accept_invite_path(id: current_user.id, invite_id: i.id), class: "btn btn-success glyphicon glyphicon-ok" %></td>
+          <td><%= link_to '', refuse_invite_path(id: current_user.id, invite_id: i.id), class: "btn btn-danger glyphicon glyphicon-remove" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
