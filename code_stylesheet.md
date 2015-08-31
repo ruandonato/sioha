@@ -1,3 +1,14 @@
+Universida de Brasília - FGA
+Disciplina: Técnicas de Programação Turma: A - 2/2015
+Professor: Maurício Serrano
+Alunos: Dylan Guedes - 12/0115727
+        Gustavo Araujo - 11/0061250
+        Ruan Donato - 11/0139755
+        Victor Henrique -13/0145700
+
+
+
+
 # Documento de Estilo - Sioha
 
 ## Sumário
