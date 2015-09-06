@@ -1,9 +1,51 @@
-<% if current_user == @team.user %>
-  <h1>Convidar Pessoas</h1>
-  <%= form_tag("/teams/#{@team.id}/invite", method: "get") do %>
-    <%= text_field_tag :keyword, params[:keyword], class: "search-text-field", placeholder: "nome do usuário" %>
-    <%= submit_tag "Buscar", :name => "Busca", class: "search-button" %>
+<div class='teams-show-page'>
+
+  <div class='row'>
+    <div class='col-md-2'>
+      <% if @team.picture? %>
+        <%= image_tag @team.picture.url, size: 40 %>
+      <% else %>
+        <%= image_tag @team.gravatar_url, size: 40 %>
+      <% end %>
+    </div>
+    <div class='col-md-10'>
+      <h1><%= @team.name %></h1>
+      <h4><%= @team.description %></h4>
+      <h4><%= @team.email %></h4>
+    </div>
+  </div>
+
+  <% if current_user == @team.user %>
+    <h3>Convidar Pessoas</h3>
+    <%= form_tag("/teams/#{@team.id}/invite", method: "get") do %>
+      <%= text_field_tag :keyword, params[:keyword], class: "search-text-field", placeholder: "nome do usuário" %>
+      <%= submit_tag "Buscar", :name => "Busca", class: "search-button" %>
+    <% end %>
   <% end %>
 
-  <h1>Convites pendentes</h1>
-<% end %>
+  <h1>Owner</h1>
+  <div class='row'>
+    <div class='col-md-2'>
+      <%= image_tag @team.user.gravatar_url, size: 40 %>
+    </div>
+
+    <div class='col-md-10'>
+      <h2><%= link_to "#{@team.user.name}", @team.user %></h2>
+      <h4><%= @team.user.email %></h4>
+    </div>
+  </div>
+
+  <h1>Membros (<%= @team.members.count %>)</h1>
+  <% @team.members.each do |m| %>
+    <div class='row'>
+      <div class='col-md-3'>
+        <%= image_tag m.gravatar_url, size: 40 %>
+      </div>
+
+      <div class='col-md-9'>
+        <h2><%= link_to "#{m.name}", m %></h2>
+        <h4><%= m.email %></h4>
+      </div>
+    </div>
+  <% end %>
+</div>

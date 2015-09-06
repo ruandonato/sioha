@@ -12,6 +12,11 @@
     <%= f.label :password, 'Senha' %>
     <%= f.password_field :password, class: 'form-control' %>
 
+    <div class='gravatar-edit'>
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails" target="_blank">change</a>
+    </div>
+
     <center><%= f.submit 'Alterar Informações', class: "btn btn-primary btn-lg" %></center>
   <% end %>
 </div>

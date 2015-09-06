@@ -2,6 +2,9 @@ class Team < ActiveRecord::Base
   include Gravtastic
   gravtastic
 
+  validate  :picture_size
+
+  mount_uploader :picture, PictureUploader
   has_many :invites
   has_many :members, through: :invites, source: :user
   belongs_to :user
@@ -12,6 +15,14 @@ class Team < ActiveRecord::Base
   def pending_invites
     @invites = Invite.where(team: self, pending: true)
     @invites += Invite.where(team: self, pending: nil)
+  end
+
+  private
+
+  def picture_size
+    if picture.size > 5.megabytes
+      errors.add(:picture, "should be less than 5MB")
+    end
   end
 
 end
