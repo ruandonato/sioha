@@ -11,15 +11,52 @@ $color-primary-4: #000B0C;
 @font-face {
   font-family: Space;
   src: url(space.ttf);
+
+}
+
+/* index page */
+
+.index-page {
+  padding-top: 25px;
+  padding: 5px;
+  background: $color-primary-1;
+
+  .row {
+    padding: 100px;
+  }
+}
+
+ul.pagination {
+  border: 1px solid #bbb;
+}
+
+@font-face {
+  font-family: Muli;
+  src: url(Muli.ttf)
+}
+
+.margin-top-50 {
+  margin-top: 50px;
 }
 
 /* page */
 .page {
-  background: $color-primary-1;
+  background: white;
 }
 
 /* footer */
-.footer.navbar-fixed-bottom {
+
+.footer {
+  margin-top: 50px;
+  padding-top: 15px;
+  background: $color-primary-3;
+  padding-bottom: 20px;
+
+  .footer-li {
+    color: $color-primary-1;
+    list-style: none;
+  }
+
   .container {
     .row {
       background: $color-primary-3;
@@ -31,15 +68,17 @@ $color-primary-4: #000B0C;
       div {
         ul {
           .attention-footer {
-            color: $color-primary-4;
-            font-size: 16px;
+            color: $color-primary-1;
+            text-transform: uppercase;
+            font-size: 13px;
             font-weight: 900;
+            font-family: 'muli';
           }
 
           list-style-type: none;
           li {
             a {
-              color: $color-primary-1;
+              font-family: 'muli';
               font-weight: 900;
               font-size: 12px;
             }
@@ -48,10 +87,6 @@ $color-primary-4: #000B0C;
       }
     }
   }
-}
-
-.footer.navbar-fixed-bottom {
-  background: $color-primary-0;
 }
 
 #logo {
@@ -70,7 +105,8 @@ $color-primary-4: #000B0C;
 
 body {
   height: 100%;
-  background: $color-primary-1;
+  background: white;
+  border: 1px solid #bbb;
 }
 
 /* content */

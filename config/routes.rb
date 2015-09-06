@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'portal#index'
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :teams, only: [:new, :create, :show, :index]
   get '/signin' => 'sessions#new'

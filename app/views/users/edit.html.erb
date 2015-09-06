@@ -1,0 +1,17 @@
+<div class='users-edit-page'>
+  <h1>Alterando Informações</h1>
+  <%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name, class: 'form-control' %>
+
+    <%= f.label :email, 'Email' %>
+    <%= f.email_field :email, class: 'form-control' %>
+
+    <%= f.label :password, 'Senha' %>
+    <%= f.password_field :password, class: 'form-control' %>
+
+    <center><%= f.submit 'Alterar Informações', class: "btn btn-primary btn-lg" %></center>
+  <% end %>
+</div>

@@ -1,25 +1,38 @@
-<footer class='footer navbar-fixed-bottom'>
+<footer class='footer'>
   <div class='container'>
     <div class='row'>
 
-      <div class='col-md-1'>
+      <div class='col-md-3'>
+        <%= image_tag('logo.png', width: 160, height: 110) %>
+
+        <a class='footer-logo', href='/', id='logo'>SIOHA</a>
       </div>
 
-      <div class='col-md-5'>
+      <div class='col-md-4'>
         <nav>
           <ul>
             <li class='attention-footer'>Navegação</li>
             <li><%= link_to 'Sobre', '#' %></li>
             <li><%= link_to 'Ajuda', '#' %></li>
+            <li><%= link_to 'Contribua!', '#' %></li>
+            <li><%= link_to 'FAQ', '#' %></li>
+            <li><%= link_to 'Logar', '#' %></li>
+            <li><%= link_to 'Deslogar', '#' %></li>
           </ul>
         </nav>
       </div>
 
-      <div class="col-md-5">
+      <div class="col-md-4">
         <nav>
           <ul>
             <li class='attention-footer'>Informações</li>
             <li><%= link_to 'Outros', '#' %></li>
+            <li><%= link_to 'Times', '#' %></li>
+            <li><%= link_to 'Estatísticas', '#' %></li>
+            <li><%= link_to 'Convites', '#' %></li>
+            <li><%= link_to 'Feed', '#' %></li>
+            <li><%= link_to 'Sprints', '#' %></li>
+            <li><%= link_to 'Backlogs', '#' %></li>
           </ul>
         </nav>
       </div>

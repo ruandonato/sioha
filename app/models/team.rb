@@ -1,4 +1,6 @@
 class Team < ActiveRecord::Base
+  include Gravtastic
+  gravtastic
 
   has_many :invites
   has_many :members, through: :invites, source: :user

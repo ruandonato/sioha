@@ -1,11 +1,23 @@
 <div class='teams'>
-  <%= link_to 'Criar Time', new_team_path, class: 'btn btn-primary' %>
-
-  <% @teams.each do |f| %>
-    <span class='show-team-block'>
-      <h3>Time: <%= link_to "#{f.name}", f %></h3>
-      <h3>Descrição: <%= f.description %></h3>
-      <h3>Dono: <%= link_to "#{f.user.name}", f.user %></h3>
-    </span>
-  <% end %>
+  <center><%= link_to 'Criar Time', new_team_path, class: 'btn btn-primary btn-success btn-lg margin-top-50' %></center>
+  <center><h1 class='teams-index-title'>Times</h1></center>
+  <div class='row margin-top-50 index'>
+    <% @teams.each do |f| %>
+      <div class='col-lg-6'>
+        <div class='row margin-top-50'>
+          <div class='col-lg-3'>
+            <div class='show-team-block'>
+              <%= image_tag f.user.gravatar_url, size: 40 %>
+            </div>
+          </div>
+          <div class='col-lg-9'>
+            <h2><%= link_to "#{f.name}", f %></h2>
+            <h4><%= f.description %></h4>
+            <h3>Owner: <%= link_to "#{f.user.name}", f.user %></h3>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <center><%= will_paginate %></center>
 </div>

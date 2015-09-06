@@ -1,0 +1,56 @@
+@import 'custom';
+
+.users-show-page {
+  padding-top: 25px;
+  padding-left: 100px;
+  padding-right: 100px;
+  background: $color-primary-1;
+  h1 {
+    color: $color-primary-0;
+    font-weight: 900;
+  }
+}
+
+
+.users-edit-page {
+  padding-top: 25px;
+  padding-left: 100px;
+  padding-right: 100px;
+  background: $color-primary-1;
+  h1 {
+    color: $color-primary-0;
+    font-weight: 900;
+  }
+  .btn.btn-primary {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+}
+
+.row.users-index-block {
+  margin-top: 15px;
+  padding: 0px;
+}
+
+.row.index-teams-block {
+  margin: 0;
+  padding: 0px;
+  margin-top: 15px;
+}
+
+.index-page {
+  h1 {
+    color: $color-primary-0;
+    font-weight: 900;
+  }
+}
+
+
+
+.table.table-hover.index-table-pending {
+  background: white;
+  width: 80%;
+  text-align: center;
+  margin-left: 8%;
+  border: 1px solid #bbb;
+}
