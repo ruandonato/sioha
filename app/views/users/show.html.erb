@@ -1,43 +1,15 @@
 <div class='users-show-page'>
-
   <% if current_user && current_user == @user %>
     <center><%= link_to 'Editar Profile', edit_user_path(id: @user.id), class: 'btn btn-lg btn-info' %></center>
   <% end %>
 
-  <div class='row'>
-    <div class='col-md-2'>
-      <% if @user.picture? %>
-        <%= image_tag @user.picture.url, size: 80 %>
-      <% else %>
-        <%= image_tag @user.gravatar_url, size: 80 %>
-      <% end %>
-    </div>
+  <%= render 'shared/user', t: @user %>
 
-    <div class='col-md-10'>
-      <h1><%= @user.name %></h1>
-      <h2><%= @user.email %></h2>
-    </div>
-  </div>
-
-  <h1>Times deste usuário:</h1>
+  <h1>Times deste usuário (<%= @teams.count %>):</h1>
   <% @teams.each do |t| %>
     <div class='row'>
-      <div class='col-md-3'>
-        <% if t.picture? %>
-          <%= image_tag t.picture.url, size: 80 %>
-        <% else %>
-          <%= image_tag t.gravatar_url, size: 80 %>
-        <% end %>
-      </div>
-
-      <div class='col-md-9'>
-        <h1><%= link_to t.name, t %></h1>
-        <h2><%= t.description %></h2>
-      </div>
-
+      <%= render 'shared/team', t: t %>
     </div>
   <% end %>
-
-
 
 </div>

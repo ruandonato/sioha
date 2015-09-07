@@ -1,0 +1,8 @@
+<div class='col-md-6'>
+  <center><h1>Ultimos times registrados:</h1></center>
+  <% @teams.each do |t| %>
+    <div class='row index-teams-block'>
+      <%= render 'shared/team', t: t %>
+    </div>
+  <% end %>
+</div>

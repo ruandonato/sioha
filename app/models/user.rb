@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
 
   has_many :invites
+  has_many :team_members
+  has_many :member_of, through: :team_members, source: :team
   has_many :teams
   before_create :create_remember_token
   validates :password, length: { minimum: 6, maximum: 100 }

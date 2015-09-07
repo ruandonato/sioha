@@ -18,10 +18,10 @@ class TeamsController < ApplicationController
   end
 
   def myteams
-    accepted_invites = Invite.where(user: current_user, accepted: true)
     @teams = []
-    accepted_invites.each do |av|
-      @teams.push av.team
+    team_members = TeamMember.where(user: current_user)
+    team_members.each do |t|
+      @teams.push t.team
     end
     @teams += Team.where(user: current_user)
   end
@@ -29,10 +29,7 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     accepted_invites = @team.invites.where(accepted: true)
-    @members = []
-    accepted_invites.each do |u|
-      @members.push u.user
-    end
+    @members = @team.members
     if @team.public_to_members
       @invites = @team.pending_invites
     else
@@ -42,7 +39,8 @@ class TeamsController < ApplicationController
   end
 
   def index
-    @teams = Team.paginate(page: params[:page], per_page: 10)
+    @teams = Team.where(public_to_members: true)
+    @teams = @teams.paginate(page: params[:page], per_page: 10)
   end
 
   def invite
@@ -64,6 +62,8 @@ class TeamsController < ApplicationController
     @invite.pending = false
     @invite.accepted = true
     @invite.save
+    @invite.team.members.push @user
+    @invite.team.save
     redirect_to @invite.team
   end
 

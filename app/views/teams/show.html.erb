@@ -1,26 +1,6 @@
 <div class='teams-show-page'>
-
   <div class='row'>
-    <div class='col-md-2'>
-      <% if @team.picture? %>
-        <%= image_tag @team.picture.url, size: 40 %>
-      <% else %>
-        <%= image_tag @team.gravatar_url, size: 40 %>
-      <% end %>
-    </div>
-    <div class='col-md-6'>
-      <h1><%= @team.name %></h1>
-      <h4><%= @team.description %></h4>
-      <h4><%= @team.email %></h4>
-    </div>
-
-    <div class='col-md-4'>
-      <% if @team.public_to_members %>
-        <h2 class='public-team-tag glyphicon glyphicon-ok'>   Publico</h2>
-      <% else %>
-        <h2 class='private-team-tag glyphicon glyphicon-remove'>  Privado</h2>
-      <% end %>
-    </div>
+    <%= render 'shared/team', t: @team %>
   </div>
 
   <% if current_user == @team.user %>
@@ -33,27 +13,13 @@
 
   <h1>Owner</h1>
   <div class='row'>
-    <div class='col-md-2'>
-      <%= image_tag @team.user.gravatar_url, size: 40 %>
-    </div>
-
-    <div class='col-md-10'>
-      <h2><%= link_to "#{@team.user.name}", @team.user %></h2>
-      <h4><%= @team.user.email %></h4>
-    </div>
+    <%= render 'shared/user', t: @team.user %>
   </div>
 
   <h1>Membros (<%= @members.count %>)</h1>
   <% @members.each do |m| %>
     <div class='row'>
-      <div class='col-md-3'>
-        <%= image_tag m.gravatar_url, size: 40 %>
-      </div>
-
-      <div class='col-md-9'>
-        <h2><%= link_to "#{m.name}", m %></h2>
-        <h4><%= m.email %></h4>
-      </div>
+      <%= render 'shared/user', t: m %>
     </div>
   <% end %>
 </div>

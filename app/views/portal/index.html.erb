@@ -4,73 +4,12 @@
   </div>
 
   <% if signed_in? %>
-    <% unless @invites.empty? %>
-      <center><h1>Convites Pendentes</h1></center>
-      <table class="table table-hover index-table-pending">
-        <thead>
-          <tr>
-            <td>Time</td>
-            <td>Dono</td>
-            <td>Descrição</td>
-            <td>Aceitar</td>
-            <td>Recusar</td>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @invites.each do |i| %>
-            <tr>
-              <td><%= link_to "#{i.team.name}", i.team %></td>
-              <td><%= link_to "#{i.team.user.name}", i.team.user %></td>
-              <td><%= i.team.description %></td>
-              <td><%= link_to '', accept_invite_path(id: current_user.id, invite_id: i.id), class: "btn btn-success glyphicon glyphicon-ok" %></td>
-              <td><%= link_to '', refuse_invite_path(id: current_user.id, invite_id: i.id), class: "btn btn-danger glyphicon glyphicon-remove" %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
+    <%= render 'invites/pending_invites' %>
   <% end %>
 
   <div class='row'>
-    <div class='col-md-6'>
-      <center><h1>Ultimos times registrados:</h1></center>
-      <% @teams.each do |t| %>
-        <div class='row index-teams-block'>
-          <div class='col-md-3'>
-            <% if t.picture? %>
-              <%= image_tag t.picture.url, size: 40 %>
-            <% else %>
-              <%= image_tag t.gravatar_url, size: 40 %>
-            <% end %>
-          </div>
-          <div class='col-md-9'>
-            <h2><%= link_to "#{t.name}", t %></h2>
-            <h4><%= t.description %></h4>
-            <h3>Owner: <%= link_to "#{t.user.name}", t.user %></h3>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <%= render 'portal/last_users' %>
 
-    <div class='col-md-6'>
-      <center><h1>Ultimos usuários registrados:</h1></center>
-      <% @users.each do |t| %>
-        <div class='row users-index-block'>
-          <div class='col-md-3'>
-            <% if t.picture? %>
-              <%= image_tag t.picture.url, size: 80 %>
-            <% else %>
-              <%= image_tag t.gravatar_url, size: 80 %>
-            <% end %>
-          </div>
-          <div class='col-md-9'>
-            <h2><%= link_to "#{t.name}", t %></h2>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
+    <%= render 'portal/last_teams' %>
   </div>
-
 </div>

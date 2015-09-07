@@ -3,22 +3,9 @@
   <center><h1 class='teams-index-title'>Times</h1></center>
   <div class='row margin-top-50 index'>
     <% @teams.each do |f| %>
-      <div class='col-lg-6'>
+      <div class='col-md-6'>
         <div class='row margin-top-50'>
-          <div class='col-lg-4'>
-            <div class='show-team-block'>
-              <% if f.picture? %>
-                <%= image_tag f.picture.url, size: 40 %>
-              <% else %>
-                <%= image_tag f.gravatar_url, size: 40 %>
-              <% end %>
-            </div>
-          </div>
-          <div class='col-lg-8'>
-            <h2><%= link_to "#{f.name}", f %></h2>
-            <h4><%= f.description %></h4>
-            <h3>Owner: <%= link_to "#{f.user.name}", f.user %></h3>
-          </div>
+          <%= render 'shared/team', t: f %>
         </div>
       </div>
     <% end %>

@@ -1,0 +1,24 @@
+<div class='invites-index-page'>
+  <h1>Ultimos convites aceitos:</h1>
+  <table class='table'>
+    <thead>
+      <tr>
+        <td>Time</td>
+        <td>Dono do time</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @accepted_invites.each do |ai| %>
+        <% if ai.team %>
+          <tr>
+            <td><%= link_to ai.team.name, ai.team %></td>
+            <td><%= link_to ai.team.user.name, ai.team.user %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h1>Convites pendentes:</h1>
+  <%= render 'invites/pending_invites' %>
+</div>

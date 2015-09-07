@@ -5,7 +5,10 @@
 
   <ul class='nav navbar-nav navbar-left'>
     <li><%= link_to 'Lista de Times', teams_path %></li>
-    <li><%= link_to 'Seus Times', myteams_path %></li>
+    <% if signed_in? %>
+      <li><%= link_to 'Seus Times', myteams_path %></li>
+      <li><%= link_to 'Seus Convites', invites_path %></li>
+    <% end %>
   </ul>
 
   <ul class='nav navbar-nav navbar-right'>

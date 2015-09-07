@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907004630) do
+ActiveRecord::Schema.define(version: 20150907120635) do
 
   create_table "invites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "team_id"
     t.boolean "pending",  default: true
     t.boolean "accepted"
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "team_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -30,14 +35,15 @@ ActiveRecord::Schema.define(version: 20150907004630) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "login"
-    t.string "description"
-    t.string "about"
-    t.string "remember_token"
-    t.string "password_digest"
-    t.string "picture"
+    t.string  "name"
+    t.string  "email"
+    t.string  "login"
+    t.string  "description"
+    t.string  "about"
+    t.string  "remember_token"
+    t.string  "password_digest"
+    t.string  "picture"
+    t.boolean "public_email",    default: false
   end
 
 end

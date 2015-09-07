@@ -6,7 +6,11 @@ class Team < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
   has_many :invites
-  has_many :members, through: :invites, source: :user
+
+  # has_many :members, through: :invites, source: :user
+  has_many :team_members
+  has_many :members, through: :team_members, source: :user
+
   belongs_to :user
   validates :name, length: { minimum: 6, maximum: 50 }
   validates :description, length: { minimum: 10, maximum: 50 }

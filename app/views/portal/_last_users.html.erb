@@ -1,0 +1,8 @@
+<div class='col-md-6'>
+  <center><h1>Ultimos usuários registrados:</h1></center>
+  <% @users.each do |t| %>
+    <div class='row users-index-block'>
+      <%= render 'shared/user', t: t %>
+    </div>
+  <% end %>
+</div>

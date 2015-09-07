@@ -9,6 +9,12 @@
     <%= f.label :email, 'Email' %>
     <%= f.email_field :email, class: 'form-control' %>
 
+    <%= f.label :public_email, 'Mostrar email para outros membros?' %>
+    <%= f.radio_button :public_email, true, checked: @user.public_email, data: { question: 'Mostrar email para outros membros?' } %>
+    <%= f.label :public_email, 'Sim' %>
+    <%= f.radio_button :public_email, false, checked: @user.public_email, data: { question: 'Mostrar email para outros membros?' } %>
+    <%= f.label :public_email, 'Não' %><br>
+
     <%= f.label :password, 'Senha' %>
     <%= f.password_field :password, class: 'form-control' %>
 

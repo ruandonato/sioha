@@ -1,0 +1,13 @@
+<div class='col-md-3'>
+  <% if t.picture? %>
+    <%= image_tag t.picture.url, size: 80 %>
+  <% else %>
+    <%= image_tag t.gravatar_url, size: 80 %>
+  <% end %>
+</div>
+<div class='col-md-9'>
+  <h2><%= link_to "#{t.name}", t %></h2>
+  <% if t.public_email %>
+    <h3><%= t.email %></h3>
+  <% end %>
+</div>
