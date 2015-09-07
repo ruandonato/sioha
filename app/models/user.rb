@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   include Gravtastic
   gravtastic
 
+  validate  :picture_size
+  mount_uploader :picture, PictureUploader
+
   has_many :invites
   has_many :teams
   before_create :create_remember_token
@@ -40,10 +43,20 @@ class User < ActiveRecord::Base
     end
   end
 
+  def member_of?(team)
+    team.members.include?(self)
+  end
+
   private
 
   def create_remember_token
     self.remember_token = User.digest(User.new_remember_token)
+  end
+
+  def picture_size
+    if picture.size > 5.megabytes
+      errors.add(:picture, "should be less than 5MB")
+    end
   end
 
 end

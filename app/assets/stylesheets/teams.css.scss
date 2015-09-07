@@ -29,7 +29,30 @@
   text-transform: uppercase;
 }
 
+.new-team-page {
+  padding-top: 25px;
+  padding-left: 100px;
+  padding-right: 100px;
+  background: $color-primary-1;
+  h1 {
+    color: $color-primary-0;
+    font-weight: 900;
+  }
+
+  div.picture {
+    margin-top: 25px;
+  }
+
+  .btn.btn-primary.btn-success.btn-lg {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+}
+
 .teams-show-page {
+
+
+
   padding-top: 25px;
   padding-left: 100px;
   padding-right: 100px;
@@ -39,3 +62,20 @@
     font-weight: 900;
   }
 }
+
+.public-team-tag {
+  background: #5cb85c;
+  color: $color-primary-1;
+  padding: 15px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+
+.private-team-tag {
+  background: #F36565;
+  color: $color-primary-1;
+  padding: 15px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+

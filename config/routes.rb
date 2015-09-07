@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/invite_member' => 'teams#invite_member'
   get '/accept_invite' => 'teams#accept_invite'
   get '/refuse_invite' => 'teams#refuse_invite'
+  get '/myteams' => 'teams#myteams'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

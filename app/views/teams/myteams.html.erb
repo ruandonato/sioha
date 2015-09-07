@@ -1,0 +1,26 @@
+<div class='teams-show-page'>
+
+  <% @teams.each do |t| %>
+    <div class='row'>
+      <div class='col-md-2'>
+        <% if t.picture? %>
+          <%= image_tag t.picture.url, size: 40 %>
+        <% else %>
+          <%= image_tag t.gravatar_url, size: 40 %>
+        <% end %>
+      </div>
+      <div class='col-md-6'>
+        <h1><%= link_to t.name, t %></h1>
+        <h4><%= t.description %></h4>
+        <h4><%= t.email %></h4>
+      </div>
+
+      <div class='col-md-4'>
+        <% if t.public_to_members %>
+          <h2 class='public-team-tag glyphicon glyphicon-ok'> Publico</h2>
+        <% else %>
+          <h2 class='private-team-tag glyphicon glyphicon-remove'> Privado</h2>
+        <% end %>
+      </div>
+    </div>
+  <% end %>

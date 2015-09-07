@@ -1,12 +1,29 @@
-<div class="sessions-new">
-  <%= form_for(:session, url: sessions_path) do |f| %>
+<div class='sessions-new'>
+  <div class='row'>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class='col-md-3'>
+    </div>
 
-    <%= f.label :email, 'E-mail' %>
-    <%= f.text_field :email, class: 'form-control' %>
 
-    <%= f.label :password, 'Senha' %>
-    <%= f.password_field :password, class: 'form-control' %>
+    <div class='col-md-6'>
+      <%= form_for(:session, url: sessions_path) do |f| %>
 
-    <center><%= f.submit class: 'btn btn-primary' %></center>
-  <% end %>
+        <%= f.label :email, 'E-mail' %>
+        <%= f.text_field :email, class: 'form-control' %>
+
+        <%= f.label :password, 'Senha' %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <center><%= f.submit class: 'btn btn-primary' %></center>
+      <% end %>
+    </div>
+
+    <div class='col-md-3'>
+    </div>
+
+  </div>
 </div>

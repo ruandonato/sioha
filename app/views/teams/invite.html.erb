@@ -1,28 +1,57 @@
-<% if current_user == @team.user %>
-  <h1>Convidar Pessoas</h1>
-  <%= form_tag("/teams/#{@team.id}/invite", method: "get") do %>
-    <%= text_field_tag :keyword, params[:keyword], class: "search-text-field", placeholder: "nome do usuário" %>
-    <%= submit_tag "Buscar", :name => "Busca", class: "search-button" %>
-  <% end %>
-<% end %>
+<div class='teams-show-page'>
+  <div class='row'>
+    <div class='col-md-2'>
+      <% if @team.picture? %>
+        <%= image_tag @team.picture.url, size: 40 %>
+      <% else %>
+        <%= image_tag @team.gravatar_url, size: 40 %>
+      <% end %>
+    </div>
+    <div class='col-md-6'>
+      <h1><%= @team.name %></h1>
+      <h4><%= @team.description %></h4>
+      <h4><%= @team.email %></h4>
+    </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <td>Nome</td>
-      <td>E-mail</td>
-      <td>Ação</td>
-    </tr>
-  </thead>
+    <div class='col-md-4'>
+      <% if @team.public_to_members %>
+        <h2 class='public-team-tag glyphicon glyphicon-ok'>   Publico</h2>
+      <% else %>
+        <h2 class='private-team-tag glyphicon glyphicon-remove'>  Privado</h2>
+      <% end %>
+    </div>
+  </div>
 
-  <tbody>
-    <% @users.each do |u| %>
-      <tr>
-        <td><%= link_to "#{u.name}", u %></td>
-        <td><%= link_to "#{u.email}", u %></td>
-        <td><%= link_to " ", invite_member_path(user_id: u.id, id: @team.id), class: "btn btn-info glyphicon glyphicon-ok" %></td>
-      </tr>
+  <% if current_user == @team.user %>
+    <h1>Convidar Pessoas</h1>
+    <%= form_tag("/teams/#{@team.id}/invite", method: "get") do %>
+      <%= text_field_tag :keyword, params[:keyword], class: "search-text-field", placeholder: "nome do usuário" %>
+      <%= submit_tag "Buscar", :name => "Busca", class: "search-button" %>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Nome</td>
+        <td>E-mail</td>
+        <td>Ação</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |u| %>
+        <tr>
+          <td><%= link_to "#{u.name}", u %></td>
+          <td><%= link_to "#{u.email}", u %></td>
+          <% if u.member_of?(@team) || @team.user == u %>
+            <td><h4>Já é Membro</h4></td>
+          <% else %>
+            <td><%= link_to " ", invite_member_path(user_id: u.id, id: @team.id), class: "btn btn-info glyphicon glyphicon-ok" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 

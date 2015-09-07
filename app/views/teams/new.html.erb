@@ -1,20 +1,28 @@
-<%= form_for(@team, html: { multipart: true }) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= f.label :name, 'Name' %>
-  <%= f.text_field :name %>
+<div class='new-team-page'>
+  <%= form_for(@team, html: { multipart: true }) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name, class: 'form-control' %>
 
-  <%= f.label :description, 'Description' %>
-  <%= f.text_field :description %>
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_field :description, class: 'form-control' %>
 
-  <%= f.label :email, 'Email' %>
-  <%= f.text_field :email %>
+    <%= f.label :email, 'Email' %>
+    <%= f.text_field :email, class: 'form-control' %>
 
-  <span class='picture'>
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-  </span>
+    <%= f.label :public_to_members, 'Público?' %>
+    <%= f.radio_button :public_to_members, true, checked: @team.public_to_members, data: { question: 'Publico para todos?' } %>
+    <%= f.label :public_to_members, 'Sim' %>
+    <%= f.radio_button :public_to_members, false, checked: @team.public_to_members, data: { question: 'Publico para todos?' } %>
+    <%= f.label :public_to_members, 'Não' %>
 
-  <%= f.submit %>
-<% end %>
+    <div class='picture'>
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    </div>
+
+    <%= f.submit 'Criar Time', class: 'btn btn-primary btn-success btn-lg' %>
+  <% end %>
+</div>
 
 <script type="text/javascript">
   $('#micropost_picture').bind('change', function() {
