@@ -1,3 +1,9 @@
+# File: user.rb.
+# Purpose: The user model.
+# License: GPL v3.
+# Sioha Group.
+# FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
+
 class User < ActiveRecord::Base
   include Gravtastic
   gravtastic

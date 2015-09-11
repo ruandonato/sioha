@@ -1,3 +1,4 @@
+#Purpose: Contains generic helper methods relative to sessions/cookies 
 module SessionsHelper
 	
   def sign_in(user)
@@ -13,7 +14,7 @@ module SessionsHelper
 
   def current_user
     remember_token = User.digest(cookies[:remember_token])
-    @current_user ||= User.find_by(remember_token: remember_token)
+    return @current_user ||= User.find_by(remember_token: remember_token)
   end
 
   def signed_in?
@@ -27,7 +28,7 @@ module SessionsHelper
   end
 
   def current_user? user
-    user == current_user
+    return user == current_user
   end
 
 end

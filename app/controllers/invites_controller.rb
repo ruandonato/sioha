@@ -1,3 +1,5 @@
+#
+# Purpose: Map actions relative to invite model
 class InvitesController < ApplicationController
 
   before_action :require_login

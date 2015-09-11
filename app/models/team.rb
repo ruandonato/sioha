@@ -1,3 +1,10 @@
+# File: team.rb.
+# Purpose: The team model.
+# License: GPL v3.
+# Sioha Group.
+# FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
+
+
 class Team < ActiveRecord::Base
   include Gravtastic
   gravtastic
