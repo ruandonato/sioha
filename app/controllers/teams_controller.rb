@@ -1,3 +1,9 @@
+# File: teams_controller.rb.
+# Purpose: Map actions relative to team model.
+# License: GPL v3.
+# Sioha Group.
+# FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
+
 class TeamsController < ApplicationController
 
   before_action :require_login, only: [:new, :create, :index]

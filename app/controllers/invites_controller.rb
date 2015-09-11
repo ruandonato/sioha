@@ -1,5 +1,9 @@
-#
+# File: invites_controller.rb.
 # Purpose: Map actions relative to invite model
+# License: GPL v3.
+# Sioha Group.
+# FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
+
 class InvitesController < ApplicationController
 
   before_action :require_login

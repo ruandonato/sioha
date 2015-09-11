@@ -1,4 +1,9 @@
-#Purpose: Contains generic helper methods relative to sessions/cookies 
+# File: sessions_helper.rb.
+# Purpose: Contains generic helper methods relative to sessions/cookies.
+# License: GPL v3.
+# Sioha Group.
+# FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
+
 module SessionsHelper
 	
   def sign_in(user)

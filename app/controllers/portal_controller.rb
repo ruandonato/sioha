@@ -1,3 +1,9 @@
+# File: portal_controller.rb.
+# Purpose:
+# License: GPL v3.
+# Sioha Group.
+# FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
+
 class PortalController < ApplicationController
 
   def index

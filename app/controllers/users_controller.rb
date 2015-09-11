@@ -1,3 +1,9 @@
+# File: users_controller.rb.
+# Purpose: Map actions relative to user model.
+# License: GPL v3.
+# Sioha Group.
+# FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
+
 class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :require_login, only: [:edit, :update]
