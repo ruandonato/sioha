@@ -104,7 +104,7 @@ ressaltados no livro (Eloquent Ruby)[http://www.amazon.com/Eloquent-Ruby-Addison
 ## 15. Estilo do cabeçalho
 + Deve haver sempre o nome do arquivo
 + Deve haver sempre o propósito deste arquivo
-+ Deve haver sempre o nome da linceça
++ Deve haver sempre o nome da licença
 + Deve haver sempre o nome do projeto
 + Deve haver sempre o nome da faculdade.
 
