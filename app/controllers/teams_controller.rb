@@ -86,7 +86,7 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:name, :description, :user_id, :email, :picture,
-                                 :public_to_members)
+                                 :public_to_members, :methodology)
   end
 
   def only_members
