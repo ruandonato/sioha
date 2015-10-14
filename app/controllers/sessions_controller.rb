@@ -1,5 +1,5 @@
 # File: sessions_controller.rb.
-# Purpose: 
+# Purpose: Controller that allow authentication for users
 # License: GPL v3.
 # Sioha Group.
 # FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.

@@ -1,5 +1,5 @@
 # File: application_controller.rb.
-# Purpose: 
+# Purpose: Allow the integration between controllers and views
 # License: GPL v3.
 # Sioha Group.
 # FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.

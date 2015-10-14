@@ -24,11 +24,11 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def User.new_remember_token
-    SecureRandom.urlsafe_base64
+   return SecureRandom.urlsafe_base64
   end
 
   def User.digest(token)
-    Digest::SHA1.hexdigest(token.to_s)
+   return Digest::SHA1.hexdigest(token.to_s)
   end
 
   def self.search(keyword, filter = nil)
@@ -45,10 +45,11 @@ class User < ActiveRecord::Base
   def pending_to?(team)
     invite = Invite.find_by(team: team, user: self)
     if invite
-      invite.pending # true = invited but not accepted, false = invited and accepted
+      pending_result = invite.pending # true = invited but not accepted, false = invited and accepted
     else
-      nil # nil = the invite isn't even created
+      pending_result =  nil # nil = the invite isn't even created
     end
+    return pending_result
   end
 
   def member_of?(team)
