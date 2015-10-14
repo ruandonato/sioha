@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
    return SecureRandom.urlsafe_base64
   end
 
+  # this method encrypts the user's password
   def User.digest(token)
    return Digest::SHA1.hexdigest(token.to_s)
   end
@@ -42,6 +43,7 @@ class User < ActiveRecord::Base
     return aux
   end
 
+  # this method check and controls the flow of a pending call
   def pending_to?(team)
     invite = Invite.find_by(team: team, user: self)
     if invite
@@ -52,6 +54,7 @@ class User < ActiveRecord::Base
     return pending_result
   end
 
+  # this method checks if a user is already in a team
   def member_of?(team)
     team.members.include?(self)
   end
@@ -62,6 +65,7 @@ class User < ActiveRecord::Base
     self.remember_token = User.digest(User.new_remember_token)
   end
 
+  # this method checks if the image size is larger than 5 megabytes
   def picture_size
     if picture.size > 5.megabytes
       errors.add(:picture, "should be less than 5MB")

@@ -28,6 +28,7 @@ class Team < ActiveRecord::Base
     @invites += Invite.where(team: self, pending: nil)
   end
 
+  # this method checks if the image size is larger than 5 megabytes
   private
 
   def picture_size
