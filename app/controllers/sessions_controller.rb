@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
   def new
   end
 
+  # authenticate the creation of an users
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
@@ -20,6 +21,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # allow the user to logoff from the system
   def destroy
     unless !signed_in?
       sign_out
@@ -28,19 +30,3 @@ class SessionsController < ApplicationController
   end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
