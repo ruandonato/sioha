@@ -100,3 +100,13 @@ ressaltados no livro (Eloquent Ruby)[http://www.amazon.com/Eloquent-Ruby-Addison
 + Deve haver um espaço antes das chaves. Exemplo:
 ** .users-new { padding: 40px; } **
 + O mesmo estilo utilizado em arquivos .rb deve ser utilizado em arquivos .css e SASS
+
+## 15. Estilo do cabeçalho
++ Deve haver sempre o nome do arquivo
++ Deve haver sempre o propósito deste arquivo
++ Deve haver sempre o nome da licença
++ Deve haver sempre o nome do projeto
++ Deve haver sempre o nome da faculdade.
+
+Exemplo:
+![Exemplo de Cabeçalho](http://i.imgur.com/wVedyM5.png)
