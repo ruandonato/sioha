@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
+  # this method will redirect users who are not logged
   private
 
   def require_login
@@ -20,6 +21,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # this method will redirect the user to the main page if the filter does not pass
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_path) unless @user == current_user
