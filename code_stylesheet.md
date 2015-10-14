@@ -110,3 +110,8 @@ ressaltados no livro (Eloquent Ruby)[http://www.amazon.com/Eloquent-Ruby-Addison
 
 Exemplo:
 ![Exemplo de Cabeçalho](http://i.imgur.com/wVedyM5.png)
+
+## 16. Estilo dos comentários
++ Os comentários devem sempre começar com letra minúscula.
++ Deve haver sempre um espaço depois de iniciado o comentário.
++ Os comentários só devem começar com letra maiúscula no cabeçalho de arquivo
