@@ -5,7 +5,7 @@
 # FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
 
 class TeamsController < ApplicationController
-
+  # these two methods gives access to controll teams only for users
   before_action :require_login, only: [:new, :create, :index]
   before_action :only_members, only: [:invite, :show_private_team]
 
@@ -25,7 +25,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  # action that renders the myteams page
+  # action that renders the myteams page  
   def myteams
     @teams = []
     team_members = TeamMember.where(user: current_user)

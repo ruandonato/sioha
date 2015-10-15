@@ -5,8 +5,8 @@
 # FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
 
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  # prevent CSRF attacks by raising an exception.
+  # for APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   include SessionsHelper
@@ -28,5 +28,3 @@ class ApplicationController < ActionController::Base
   end
 
 end
-
-
