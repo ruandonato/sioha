@@ -8,7 +8,7 @@ class InvitesController < ApplicationController
 
   before_action :require_login
 
-  # action that renders the index page of the controller invites
+  # action that renders the index page of the invites controller
   def index
     @all_invites = Invite.where(user: current_user)
     @accepted_invites = @all_invites.where(accepted: true)

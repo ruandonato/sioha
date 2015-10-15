@@ -6,9 +6,12 @@
 
 class SessionsController < ApplicationController
   
+
+  # action that renders the new page of the session controller
   def new
   end
 
+  # this method creates a session to log a user
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
@@ -20,6 +23,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # this method destroys a session to log out a user
   def destroy
     unless !signed_in?
       sign_out

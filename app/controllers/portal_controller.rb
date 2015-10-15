@@ -6,6 +6,8 @@
 
 class PortalController < ApplicationController
 
+  
+	# action that renders the index page of the portal controller
   def index
     if signed_in?
       @invites = Invite.where(user: current_user, pending: true)
