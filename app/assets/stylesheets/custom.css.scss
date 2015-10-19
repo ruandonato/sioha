@@ -43,7 +43,7 @@ $color-primary-4: #000B0C;
 body {
   height: 100%;
   background: $color-primary-4;
-  border: 0;
+  border: 0;  
 }
 
 /* index page */
@@ -110,6 +110,7 @@ ul.pagination {
   color: $color-primary-1;
   font-size: 40px;
   margin-left: 5px;
+  text-shadow: 0 0 5px white;
 
   font-weight: 900;
   &:hover {
@@ -129,7 +130,7 @@ ul.pagination {
   padding-top: 25px;
   padding: 5px;
 
-  border-radius: 10px;
+  border-radius: 30px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
 }
@@ -214,5 +215,22 @@ ul.pagination {
   h1 {
     color: $color-primary-0;
     font-weight: 900;
+  }
+}
+
+h1 {
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
   }
 }

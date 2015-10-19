@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+    $(".anny-class").click(function(){
+     $("#animation").addClass("journal");
+    });
