@@ -11,6 +11,15 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
+
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
+
+  def render_not_found
+    respond_to do |f|
+      f.html{ render :template => "errors/500", :status => 500}
+    end
+  end
+
   # this method will redirect users who are not logged
   private
 
