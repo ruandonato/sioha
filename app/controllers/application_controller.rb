@@ -11,21 +11,24 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
-
+  # rescues the method "render_not_found" for RecordNotFound erros
   rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
 
+  # rescues the method "routes_not_found" for RoutingError
   rescue_from ActionController::RoutingError, :with => :routes_not_found
 
   def raise_not_found!
     raise ActionController::RoutingError.new("No route matches #{params[:unmatched_route]}")
   end
 
+  # action that renders the error page 404
   def routes_not_found
     respond_to do |f|
       f.html{ render :template => "errors/404", :status => 404}
     end
   end
 
+  # action that renders the error page 500
   def render_not_found
     respond_to do |f|
       f.html{ render :template => "errors/500", :status => 500}
