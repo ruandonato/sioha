@@ -15,8 +15,12 @@ Rails.application.routes.draw do
   get '/refuse_invite' => 'teams#refuse_invite'
   get '/myteams' => 'teams#myteams'
 
+
   # invites controller
   get '/invites' => 'invites#index'
+
+  # exception routes
+  get '*unmatched_route', :to => 'application#raise_not_found!'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
