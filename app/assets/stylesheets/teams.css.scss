@@ -108,3 +108,34 @@ h3.methodology-empty {
   border: 1px solid #bbb;
   color: white;
 }
+
+h3.team-public {
+  font-size: 1.4em;
+  font-family: Muli;
+  background: rgb(81, 214, 152);
+  text-align: center;
+  padding: 10px;
+  max-width: 200px;
+  border: 1px solid #bbb;
+  color: white;
+}
+
+h3.team-private {
+  font-size: 1.4em;
+  font-family: Muli;
+  background: rgb(210, 54, 82);
+  text-align: center;
+  padding: 10px;
+  max-width: 200px;
+  border: 1px solid #bbb;
+  color: white;
+}
+
+.team-shared-block {
+  border-bottom: 1px solid #f2f5fa;
+  margin-top: 50px;
+}
+
+div.col-md-4.teams-photo {
+  padding-top: 50px;
+}
