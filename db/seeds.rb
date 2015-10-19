@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 99.times do |n|
   name = Faker::Name.name
   email = Faker::Internet.email
@@ -16,11 +17,17 @@
                password_confirmation: password)
 end
 
+methodology = "SAFe"
+
 80.times do |b|
   user = User.find(b+1)
   name = Faker::Company.name
+  if methodology == "SAFe"
+    methodology = "Scrum"
+  end
   description = Faker::Lorem.sentence(3, true, 4)
   Team.create(user: user,
               description: description,
+              methodology: methodology,
               name: name)
 end

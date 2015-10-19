@@ -1,4 +1,4 @@
-<div class='col-md-2'>
+<div class='col-md-4'>
   <% if t.picture? %>
     <%= image_tag t.picture.url, size: 40 %>
   <% else %>
@@ -12,9 +12,10 @@
   <h3>Owner: <%= link_to "#{t.user.name}", t.user %></h3>
 </div>
 
-<div class='col-md-4'>
+<div class='col-md-2'>
   <% if t.public_to_members %>
     <h3 class='glyphicon glyphicon-leaf btn-success public-team-mark'></h3>
+    <h3 class='btn btn-info'><%= t.methodology %></h3>
   <% else %>
     <h3 class='glyphicon glyphicon-fire btn-danger private-team-mark'></h3>
   <% end %>
