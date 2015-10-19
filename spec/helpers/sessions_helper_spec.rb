@@ -1,11 +1,11 @@
 require 'rails_helper'
-  
+
 include SessionsHelper
 
 RSpec.describe SessionsHelper, :type => :helper do
-  
-  before do 
-    @user = User.new(email: 'sanjana@gmail.com', password: 'sanjana123', 
+
+  before do
+    @user = User.new(email: 'sanjana@gmail.com', password: 'sanjana123',
                                     password_confirmation: 'sanjana123')
     @user.save
   end
@@ -13,7 +13,7 @@ RSpec.describe SessionsHelper, :type => :helper do
   describe '#current_user?' do
     context 'compared with @user' do
       it 'must return true' do
-        sign_in(@user)
+        sign_in @user
         expect(current_user).to eq(@user)
       end
     end
@@ -21,17 +21,26 @@ RSpec.describe SessionsHelper, :type => :helper do
 
   describe '#sign_out' do
       it 'the user should logout with success' do
-        sign_in(@user)
+        sign_in @user
         sign_out
         expect(current_user).to be(nil)
     end
   end
 
   describe '#signed_in?' do
-    it "expect signout to clear current_user" do
-      sign_in(@user)
+    it 'expect signout to clear current_user' do
+      sign_in @user
       sign_out
       expect(signed_in?).to be(false)
+    end
+  end
+
+  describe '#current_user?' do
+    context 'comparison between the same user' do
+      it 'should return true' do
+        sign_in @user
+        expect(current_user?(@user)).to eq true
+      end
     end
   end
 end
