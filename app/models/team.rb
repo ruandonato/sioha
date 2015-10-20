@@ -34,6 +34,8 @@ class Team < ActiveRecord::Base
   def picture_size
     if picture.size > 5.megabytes
       errors.add(:picture, "should be less than 5MB")
+    else
+      # nothing to do
     end
   end
 
