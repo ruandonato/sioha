@@ -39,16 +39,23 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login
-    unless signed_in?
+    if signed_in? == false
       flash[:danger] = "Esta ação requer que o usuário esteja logado."
       redirect_to signin_path
+    else
+      # nothing to do
     end
   end
 
   # this method will redirect the user to the main page if the filter does not pass
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_path) unless @user == current_user
+    
+    if @user != current_user
+     redirect_to(root_path)
+    else
+      # nothing to do
+    end
   end
 
 end
