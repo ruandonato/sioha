@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   # this method creates a new user
   def create
     @user = User.new(user_params)
+    
     if @user.save
       sign_in @user
       redirect_to @user
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
   # this method that updates a user with the desired changes
   def update
     @user = User.find(params[:id])
+    
     if @user.update_attributes(user_params)
       flash[:success] = 'Informações alteradas!'
       redirect_to @user
