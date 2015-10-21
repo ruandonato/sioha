@@ -211,10 +211,13 @@ ul.pagination {
   padding-left: 100px;
   padding-right: 100px;
   padding-bottom: 300px;
-  background: $color-primary-1;
+  background: white;
+  border-radius: 10px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
   h1 {
     color: $color-primary-0;
     font-weight: 900;
   }
-}
 
+}
