@@ -24,6 +24,13 @@ class SessionsController < ApplicationController
     end
   end
 
+  # this method creates a session with a facebook account
+  def createFacebook
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to root_path
+  end
+
   # this method destroys a session to log out a user
   def destroy
     if signed_in?
