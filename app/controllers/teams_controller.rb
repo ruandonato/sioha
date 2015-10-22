@@ -1,4 +1,4 @@
-# File: teams_controller.rb.
+  # File: teams_controller.rb.
 # Purpose: Map actions relative to team model.
 # License: GPL v3.
 # Sioha Group.

@@ -1,3 +1,9 @@
+# File: team_spec.rb
+# Purpose: Receive the unitary tests of model teams
+# License: GPL v3.
+# Sioha Group.
+# FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
+
 require 'rails_helper'
 
 RSpec.describe Team, :type => :model do
@@ -28,6 +34,7 @@ RSpec.describe Team, :type => :model do
     end
   end
 
+  #tests if a team is single
   describe "unique team" do
     it "should be_valid" do
       uniqueness_team = Team.new
@@ -42,6 +49,7 @@ RSpec.describe Team, :type => :model do
       end
     end
 
+  #tests if there is duplicate teams
     describe "duplicated process_number" do
       it "should not be_valid" do
         duplicated_team = Team.new

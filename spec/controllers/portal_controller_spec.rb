@@ -1,3 +1,9 @@
+# File: portal_controller_spec.rb
+# Purpose: Receive the  tests of portal controller
+# License: GPL v3.
+# Sioha Group.
+# FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
+
 require 'rails_helper'
 
 RSpec.describe PortalController, :type => :controller do

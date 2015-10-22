@@ -1,3 +1,8 @@
+# File: team_spec.rb
+# Purpose: Receive the tests of users controller
+# License: GPL v3.
+# Sioha Group.
+# FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
 
 RSpec.describe UsersController, type: :controller do
   include SessionsHelper
