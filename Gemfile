@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-github'
+
 
 gem 'simplecov', :require => false, :group => :test
 # Use ActiveModel has_secure_password
