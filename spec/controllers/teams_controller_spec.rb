@@ -27,4 +27,24 @@ before do
       end
     end
 
+  describe   "GET" do
+      describe '#index' do
+        it 'should return sucess' do
+          sign_in @user
+          get :index
+          expect(response).to have_http_status(:success)
+          end
+        end
+      end
+
+  describe   "GET" do
+    describe '#invite' do
+        it 'should return sucess' do
+          sign_in @user
+          get :invite
+          expect(response).to have_http_status(:success)
+          end
+        end
+      end
+
   end
