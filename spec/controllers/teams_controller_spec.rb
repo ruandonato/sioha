@@ -13,6 +13,11 @@ before do
     @user = User.new(email: 'sanjana@gmail.com', password: 'sanjana123',
                     password_confirmation: 'sanjana123')
     @user.save
+
+    @team = Team.new(name: "SiohaTecproggers", description: "The agile resistence!", user: @user,
+                    methodology: "SAFe", public_to_members: true, email: "siohatecprog@gmai.com")
+    @team.save
+
   end
 
   describe   "GET" do
@@ -37,11 +42,11 @@ before do
         end
       end
 
-  describe   "GET" do
-    describe '#invite' do
+    describe   "GET" do
+      describe '#myteams' do
         it 'should return sucess' do
           sign_in @user
-          get :invite
+          get :myteams
           expect(response).to have_http_status(:success)
           end
         end
