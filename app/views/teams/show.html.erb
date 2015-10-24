@@ -1,25 +1,35 @@
 <div class='teams-show-page'>
-  <div class='row'>
-    <%= render 'shared/team', t: @team %>
-  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <div id="current-show">
+        <div class='row'>
+          <%= render 'shared/team', t: @team %>
+        </div>
 
-  <% if current_user == @team.user %>
-    <h3>Convidar Pessoas</h3>
-    <%= form_tag("/teams/#{@team.id}/invite", method: "get") do %>
-      <%= text_field_tag :keyword, params[:keyword], class: "search-text-field", placeholder: "nome do usuário" %>
-      <%= submit_tag "Buscar", :name => "Busca", class: "search-button" %>
-    <% end %>
-  <% end %>
+        <% if current_user == @team.user %>
+          <h3>Convidar Pessoas</h3>
+          <%= form_tag("/teams/#{@team.id}/invite", method: "get") do %>
+            <%= text_field_tag :keyword, params[:keyword], class: "search-text-field", placeholder: "nome do usuário" %>
+            <%= submit_tag "Buscar", :name => "Busca", class: "search-button" %>
+          <% end %>
+        <% end %>
 
-  <h1>Owner</h1>
-  <div class='row'>
-    <%= render 'shared/user', t: @team.user %>
-  </div>
+        <h1>Owner</h1>
+        <div class='row'>
+          <%= render 'shared/user', t: @team.user %>
+        </div>
 
-  <h1>Membros (<%= @members.count %>)</h1>
-  <% @members.each do |m| %>
-    <div class='row'>
-      <%= render 'shared/user', t: m %>
+        <h1>Membros (<%= @members.count %>)</h1>
+        <% @members.each do |m| %>
+          <div class='row'>
+            <%= render 'shared/user', t: m %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+
+    <div class="col-md-2">
+      <%= link_to "", @team, class: "fa fa-user requirements", id: @team.id %>
+      <%= link_to "", '/teams/'+@team.id.to_s+'/team_requirements/', class: "fa fa-align-justify requirements", id: @team.id, remote: true %>
+    </div>
 </div>

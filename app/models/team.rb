@@ -10,7 +10,7 @@ class Team < ActiveRecord::Base
   gravtastic
 
   validate  :picture_size
-
+  has_many :requirements
   mount_uploader :picture, PictureUploader
   has_many :invites
 

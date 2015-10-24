@@ -18,7 +18,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.user = current_user
-    
+
     if(@team.save)
       redirect_to @team
     else
@@ -26,7 +26,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  # action that renders the myteams page  
+  # action that renders the myteams page
   def myteams
     @teams = []
     team_members = TeamMember.where(user: current_user)
@@ -41,11 +41,11 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     accepted_invites = @team.invites.where(accepted: true)
     @members = @team.members
-    
+
     if @team.public_to_members
       @invites = @team.pending_invites
     else
-      @invites = @team.pending_invites  
+      @invites = @team.pending_invites
       only_members
     end
   end
@@ -93,6 +93,14 @@ class TeamsController < ApplicationController
     redirect_to @invite.team
   end
 
+  def team_requirements
+    @team = Team.find(params[:id])
+    @requirements = @team.requirements
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # this method passing parameters to the edit page and creating team
   private
 
@@ -104,7 +112,7 @@ class TeamsController < ApplicationController
   # this method prohibits non-members to see a private team
   def only_members
     @team = Team.find(params[:id])
-    
+
     if current_user == nil
       flash.now[:danger] = 'Este time está privado. Você precisa estar logado.'
       redirect_to signin_path

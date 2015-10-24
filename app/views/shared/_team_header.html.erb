@@ -1,0 +1,14 @@
+<nav class='navbar.navbar-default.team-header'>
+  <div class='navbar-header.team-header'>
+    <%= link_to t.name, t, class: 'navbar-brand', id: 'team-logo' %>
+  </div>
+
+  <ul class='nav navbar-nav navbar-left'>
+    <li><%= link_to "Requisitos", '/teams/'+t.id.to_s+'/team_requirements' %></li>
+    <li><%= link_to "Wiki", '#' %></li>
+    <li><%= link_to "Teste", '', class: "team-info", id: "#{t.id}" %></li>
+  </ul>
+
+  <ul class='nav navbar-nav navbar-right'>
+  </ul>
+</nav>
