@@ -1,5 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 $color-primary-0: #236267;  // Main Primary color */
 $color-primary-1: #E7E7E7;
@@ -43,7 +45,7 @@ $color-primary-4: #000B0C;
 body {
   height: 100%;
   background: $color-primary-4;
-  border: 0;  
+  border: 0;
 }
 
 /* index page */

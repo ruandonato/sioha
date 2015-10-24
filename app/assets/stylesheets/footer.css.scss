@@ -1,0 +1,28 @@
+.fa.fa-twitter.footer-twitter {
+  color: #01353A;
+  font-size: 80px;
+  border-radius: 4px;
+  margin-bottom: 40px;
+  text-decoration: none;
+  background: white;
+  &:hover {
+    color: white;
+    background: #01353A;
+    border: 1px solid rgb(22, 93, 105);
+  }
+}
+
+.fa.fa-facebook.footer-facebook {
+  color: #01353A;
+  font-size: 80px;
+  min-width: 74px;
+  border-radius: 4px;
+  text-decoration: none;
+  background: white;
+
+  &:hover {
+    color: white;
+    background: #01353A;
+    border: 1px solid rgb(22, 93, 105);
+  }
+}
