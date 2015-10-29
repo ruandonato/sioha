@@ -20,8 +20,8 @@
     <%= f.label :methodology, 'Qual a metodologia do time?' %>
     <%= f.radio_button :methodology, 'SAFe', checked: @team.methodology, data: { question: 'SAFe' } %>
     <%= f.label :methodology, 'SAFe' %>
-    <%= f.radio_button :methodology, 'SCRUM', checked: @team.methodology, data: { question: ' Qual a metodologia do time?' } %>
-    <%= f.label :methodology, 'SCRUM' %>
+    <%= f.radio_button :methodology, 'Scrum', checked: @team.methodology, data: { question: ' Qual a metodologia do time?' } %>
+    <%= f.label :methodology, 'Scrum' %>
 
     <div class='picture'>
       <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
