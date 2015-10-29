@@ -7,6 +7,7 @@
         </div>
 
         <% if current_user == @team.user %>
+          <center><%= link_to 'Editar informações do time', edit_team_path(id: @team.id), class: 'btn btn-lg btn-info' %></center>
           <h3>Convidar Pessoas</h3>
           <%= form_tag("/teams/#{@team.id}/invite", method: "get") do %>
             <%= text_field_tag :keyword, params[:keyword], class: "search-text-field", placeholder: "nome do usuário" %>
@@ -31,5 +32,6 @@
     <div class="col-md-2">
       <%= link_to "", @team, class: "fa fa-user requirements", id: @team.id %>
       <%= link_to "", '/teams/'+@team.id.to_s+'/team_requirements/', class: "fa fa-align-justify requirements", id: @team.id, remote: true %>
+      
     </div>
 </div>
