@@ -9,6 +9,20 @@
     <%= f.label :description, 'Descrição' %>
     <%= f.text_field :description, class: 'form-control' %>
 
+    <br>  
+    <%= f.label :public_to_members, 'Público?' %>
+    <%= f.radio_button :public_to_members, true, checked: @team.public_to_members, data: { question: 'Publico para todos?' } %>
+    <%= f.label :public_to_members, 'Sim' %>
+    <%= f.radio_button :public_to_members, false, checked: @team.public_to_members, data: { question: 'Publico para todos?' } %>
+    <%= f.label :public_to_members, 'Não' %>
+
+    <br>  
+    <%= f.label :methodology, 'Qual a metodologia do time?' %>
+    <%= f.radio_button :methodology, 'SAFe', checked: @team.methodology, data: { question: 'SAFe' } %>
+    <%= f.label :methodology, 'SAFe' %>
+    <%= f.radio_button :methodology, 'SCRUM', checked: @team.methodology, data: { question: ' Qual a metodologia do time?' } %>
+    <%= f.label :methodology, 'SCRUM' %>
+
     <span class='picture'>
       <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'btn btn-primary' %>
     </span>
