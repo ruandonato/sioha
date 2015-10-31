@@ -145,10 +145,6 @@ class TeamsController < ApplicationController
                                  :public_to_members, :methodology)
   end
 
-  def requirement_params
-    params.require(:requirement).permit(:code, :type, :description, :priority, :team_id, :user_id)
-  end
-
   # this method prohibits non-members to see a private team
   def only_members
     @team = Team.find(params[:id])

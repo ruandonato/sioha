@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :teams, only: [:new, :create, :show, :edit, :update, :index]
+  resources :requirements, only: [:new, :create, :show, :edit, :update, :index]
+
   get '/signin' => 'sessions#new'
   get '/signup' => 'users#new'
   delete '/signout' => 'sessions#destroy'
@@ -15,17 +17,15 @@ Rails.application.routes.draw do
   get '/refuse_invite' => 'teams#refuse_invite'
   get '/myteams' => 'teams#myteams'
   get '/teams/:id/team_requirements' => 'teams#team_requirements'
-  get '/new_requirement' => 'teams#new_requirement'
-  get '/requirements' => 'teams#show'
-  post '/requirements' => 'teams#create_requirement'
-  post '/requirements/new' => 'teams#create_requirement'
-
 
   # invites controller
   get '/invites' => 'invites#index'
 
   # exception routes
   get '*unmatched_route', :to => 'application#raise_not_found!'
+
+  # requirements controller
+  get '/requirements/:id' => 'requirements#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

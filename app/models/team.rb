@@ -28,6 +28,26 @@ class Team < ActiveRecord::Base
     @invites += Invite.where(team: self, pending: nil)
   end
 
+  def upstream_traceability_scope(type)
+    if type == "UserStory"
+      return this.requirements.features
+    elsif type == "InvestimentTheme"
+      # investiment themes dont have a upstream traceability
+    elsif type == "Feature"
+      return this.requirements.features
+    end
+  end
+
+  def downstream_traceability_scope(type)
+    if type == "UserStory"
+      # stories dont have an downstream traceability
+    elsif type == "InvestimentTheme"
+      return this.requirements.features
+    elsif type == "Feature"
+      return this.requirements.stories
+    end
+  end
+
   # this method checks if the image size is larger than 5 megabytes
   private
 

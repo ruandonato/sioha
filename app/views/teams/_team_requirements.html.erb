@@ -17,7 +17,7 @@
     <tbody>
       <% @team.requirements.each do |b| %>
         <tr>
-          <td><%= link_to b.description, '#', class: "" %></td>
+          <td><%= link_to b.description, '/requirements/'+b.id.to_s, class: "" %></td>
           <td><%= link_to b.code, '#', class: "" %></td>
           <td><%= link_to b.class, '#', class: "" %></td>
         </tr>

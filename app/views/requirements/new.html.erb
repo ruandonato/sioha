@@ -1,0 +1,39 @@
+<%= form_for @requirement do |f| %>
+  <%= f.label :code, "Código: " %>
+  <%= f.text_field :code, class: "form-control" %>
+
+  <%= f.label :description, "Descrição: " %>
+  <%= f.text_field :description, class: "form-control" %>
+
+  <br>
+  <%= f.label :priority, "Prioridade:", class: "control-label" %><br>
+
+  <%= f.radio_button :priority, 'high', checked: true %>
+  <%= label :priority, 'Alta' %>
+
+  <%= f.radio_button :priority, 'medium', checked: true %>
+  <%= label :priority, 'Média' %>
+
+  <%= f.radio_button :priority, 'low', checked: true %>
+  <%= label :priority, 'Baixa' %>
+
+  <br>
+  <%= f.label :type, "Tipo de Requisito:", class: "control-label" %><br>
+
+  <%= f.radio_button :type, 'UserStory', checked: true %>
+  <%= label :type, 'Estória de Usuário' %>
+
+  <%= f.radio_button :type, 'Feature', checked: true %>
+  <%= label :type, 'Feature' %>
+
+  <% if @team.methodology == "SAFe" %>
+    <%= f.radio_button :type, 'InvestimentTheme', checked: true %>
+    <%= label :type, 'Tema de Investimento' %>
+  <% else %>
+
+  <% end %>
+  <br>
+  <%= hidden_field_tag "team_id", @team.id %>
+  <%= hidden_field_tag "user_id", @user.id %>
+  <%= f.submit class: "btn btn-success" %>
+<% end %>

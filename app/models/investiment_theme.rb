@@ -5,5 +5,5 @@
 # FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
 
 class InvestimentTheme < Requirement
-  
+
 end
