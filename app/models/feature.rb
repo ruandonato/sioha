@@ -4,6 +4,6 @@
 # Sioha Group.
 # FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
 
-class UserStory < Requirement
+class Feature < Requirement
 
 end

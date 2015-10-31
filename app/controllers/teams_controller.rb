@@ -127,8 +127,14 @@ class TeamsController < ApplicationController
     @user = User.find(params[:user_id])
 
     @requirement = Requirement.new(requirement_params)
-    puts "TO AQUI"*100
-    redirect_to @team
+    @requirement.team = @team
+    @requirement.author = @user
+
+    if @requirement.save
+      redirect_to @team
+    else
+      render 'new_requirement'
+    end
   end
 
   # this method passing parameters to the edit page and creating team

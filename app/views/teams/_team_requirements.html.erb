@@ -8,7 +8,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <td>Nome<td>
+        <td>Nome</td>
         <td>Código</td>
         <td>Classe</td>
       </tr>
@@ -17,7 +17,9 @@
     <tbody>
       <% @team.requirements.each do |b| %>
         <tr>
-          <td><%= link_to b.name, '#', class: "btn btn-info" %></td>
+          <td><%= link_to b.description, '#', class: "" %></td>
+          <td><%= link_to b.code, '#', class: "" %></td>
+          <td><%= link_to b.class, '#', class: "" %></td>
         </tr>
       <% end %>
     </tbody>
