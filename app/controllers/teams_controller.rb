@@ -116,12 +116,31 @@ class TeamsController < ApplicationController
     end
   end
 
+  def new_requirement
+    @team = Team.find(params[:team_id])
+    @user = User.find(params[:user_id])
+    @requirement = Requirement.new(team: @team, author: @user)
+  end
+
+  def create_requirement
+    @team = Team.find(params[:team_id])
+    @user = User.find(params[:user_id])
+
+    @requirement = Requirement.new(requirement_params)
+    puts "TO AQUI"*100
+    redirect_to @team
+  end
+
   # this method passing parameters to the edit page and creating team
   private
 
   def team_params
     params.require(:team).permit(:name, :description, :user_id, :email, :picture,
                                  :public_to_members, :methodology)
+  end
+
+  def requirement_params
+    params.require(:requirement).permit(:code, :type, :description, :priority, :team_id, :user_id)
   end
 
   # this method prohibits non-members to see a private team

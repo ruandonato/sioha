@@ -1,7 +1,9 @@
 <div class='team-requirements'>
   <h1>Requisitos</h1>
 
-  <%= link_to 'Novo Requisito', '#', class: "btn btn-success" %>
+  <% if current_user && current_user.member_of?(@team) || @team.user == current_user %>
+    <%= link_to 'Novo Requisito', new_requirement_path(team_id: @team.id, user_id: current_user.id), class: "btn btn-success" %>
+  <% end %>
   <br>
   <table class="table table-hover">
     <thead>

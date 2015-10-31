@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   get '/accept_invite' => 'teams#accept_invite'
   get '/refuse_invite' => 'teams#refuse_invite'
   get '/myteams' => 'teams#myteams'
+  get '/teams/:id/team_requirements' => 'teams#team_requirements'
+  get '/new_requirement' => 'teams#new_requirement'
+  get '/requirements' => 'teams#show'
+  post '/requirements' => 'teams#create_requirement'
+  post '/requirements/new' => 'teams#create_requirement'
 
 
   # invites controller
