@@ -1,0 +1,44 @@
+<div class='requirements-edit-page'>
+  <h1>Alterando Informações</h1>
+  <%= form_for @requirement, :url => { :controller => "requirements", :action =>  "update" } do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :code, 'Código' %>
+    <%= f.text_field :code, class: 'form-control' %>
+
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_field :description, class: 'form-control' %>
+
+    <br>
+    <%= f.label :priority, "Prioridade:", class: "control-label" %><br>
+
+    <%= f.radio_button :priority, 'high', checked: true %>
+    <%= label :priority, 'Alta' %>
+
+    <%= f.radio_button :priority, 'medium', checked: true %>
+    <%= label :priority, 'Média' %>
+
+    <%= f.radio_button :priority, 'low', checked: true %>
+    <%= label :priority, 'Baixa' %>
+
+    <br>
+    <%= f.label :type, "Tipo de Requisito:", class: "control-label" %><br>
+
+    <%= f.radio_button :type, 'UserStory', checked: true %>
+    <%= label :type, 'Estória de Usuário' %>
+
+    <%= f.radio_button :type, 'Feature', checked: true %>
+    <%= label :type, 'Feature' %>
+
+    <% if @requirement.team.methodology == "SAFe" %>
+      <%= f.radio_button :type, 'InvestimentTheme', checked: true %>
+      <%= label :type, 'Tema de Investimento' %>
+    <% else %>
+      <% # nothing to do here %>
+    <% end %>
+
+    <center>
+    <%= f.submit 'Alterar Informações', class: "btn btn-primary btn-lg" %>
+    </center>
+  <% end %> 
+</div>
