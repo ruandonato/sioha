@@ -3,12 +3,12 @@
   <center><h1 class='teams-index-title'>Times</h1></center>
   <div class='row margin-top-50 index'>
     <% @teams.each do |f| %>
-      <div class='col-md-6'>
-        <div class='row margin-top-50'>
+      <div class='row'>
           <%= render 'shared/team', t: f %>
-        </div>
       </div>
     <% end %>
   </div>
   <center><%= will_paginate %></center>
+  <span class="division"> <hr> </span>
+  <span class="division"> <hr> </span>
 </div>
