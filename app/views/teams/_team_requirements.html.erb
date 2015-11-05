@@ -11,6 +11,7 @@
         <td>Nome</td>
         <td>Código</td>
         <td>Classe</td>
+        <td>Prioridade</td>
       </tr>
     </thead>
 
@@ -20,6 +21,13 @@
           <td><%= link_to b.description, '/requirements/'+b.id.to_s, class: "" %></td>
           <td><%= link_to b.code, '#', class: "" %></td>
           <td><%= link_to b.class, '#', class: "" %></td>
+          <% if b.priority == "high" %>
+            <td><%= link_to "Alta", '/requirements/'+b.id.to_s, class: "" %></td>
+          <% elsif b.priority == "medium" %>
+            <td><%= link_to "Média", '/requirements/'+b.id.to_s, class: "" %></td>
+          <% else %>
+            <td><%= link_to "Baixa", '/requirements/'+b.id.to_s, class: "" %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

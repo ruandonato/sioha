@@ -1,7 +1,27 @@
-<%= @requirement.description %>
+<div class='requirements-show'>
+  <h1><%= @requirement.description %></h1>
 
-<% if current_user && @requirement.author == current_user %>
-  <center>
-    <%= link_to 'Editar Requisito', edit_requirement_path(id: @requirement.id), class: 'btn btn-lg btn-info' %>
-  </center>
-<% end %>
+  <h3>Criado por: <%= link_to @requirement.author.name, @requirement.author %></h3>
+  <% if @requirement.priority == "high" %>
+    <span class='fa fa-star-half-o btn-danger show-priority'>  Alta Prioridade</span>
+  <% elsif @requirement.priority == "low" %>
+    <span class='fa fa-star-half-o btn-info show-priority'>  Baixa Prioridade</span>
+  <% else %>
+    <span class='fa fa-star-half-o btn-warning show-priority'>  Média Prioridade</span>
+  <% end %>
+
+  <% if @requirement.kind_of? UserStory %>
+    <span class='fa fa-credit-card show-priority btn-danger requirement-comparison'>   História de Usuário</span>
+  <% elsif @requirement.kind_of? Feature %>
+    <span class='fa fa-map-o show-priority btn-danger requirement-comparison'>   Feature</span>
+  <% else %>
+    <span class='fa fa-book show-priority btn-danger requirement-comparison'>    Tema de Investimento</span>
+  <% end %>
+
+  <% if current_user && @requirement.author == current_user %>
+    <center>
+      <%= link_to 'Editar Requisito', edit_requirement_path(id: @requirement.id), class: 'btn btn-lg btn-info' %>
+    </center>
+  <% end %>
+
+</div>

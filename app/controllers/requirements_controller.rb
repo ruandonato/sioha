@@ -6,7 +6,7 @@
 
 class RequirementsController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update]
-  before_action :only_members, only: [:edit, :update, :new]
+  before_action :only_members, only: [:edit, :update]
 
   def show
     @requirement = Requirement.find(params[:id])
@@ -27,16 +27,23 @@ class RequirementsController < ApplicationController
   def update
     @requirement = Requirement.find(params[:id])
     @team = @requirement.team
+    puts "="*80
+    puts @requirement.priority
+    puts "="*80
+
     if @requirement.kind_of? UserStory
       @requirement.update_attributes(user_story_params)
+      @requirement.save
       flash[:success] = 'Informações alteradas!'
       redirect_to '/requirements/' + @requirement.id.to_s
     elsif @requirement.kind_of? Feature
       @requirement.update_attributes(feature_params)
+      @requirement.save
       flash[:success] = 'Informações alteradas!'
       redirect_to '/requirements/' + @requirement.id.to_s
     elsif @requirement.kind_of? InvestimentTheme
       @requirement.update_attributes(investiment_theme_params)
+      @requirement.save
       flash[:success] = 'Informações alteradas!'
       redirect_to '/requirements/' + @requirement.id.to_s
     else
@@ -78,7 +85,8 @@ class RequirementsController < ApplicationController
   end
 
   def only_members
-    @team = Team.find(params[:id])
+    @requirement = Requirement.find(params[:id])
+    @team = @requirement.team
 
     if current_user == nil
       flash.now[:danger] = 'Este time está privado. Você precisa estar logado.'
