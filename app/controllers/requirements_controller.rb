@@ -1,7 +1,16 @@
+# File: requirements_controller.rb.
+# Purpose: Map actions relative to requirement model.
+# License: GPL v3.
+# Sioha Group.
+# FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
+
 class RequirementsController < ApplicationController
+  before_action :require_login, only: [:new, :create, :edit, :update]
+  before_action :only_members, only: [:edit, :update, :new]
 
   def show
     @requirement = Requirement.find(params[:id])
+    @team = @requirement.team
   end
 
   def new
@@ -12,10 +21,12 @@ class RequirementsController < ApplicationController
 
   def edit
     @requirement = Requirement.find(params[:id])
+    @team = @requirement.team
   end
 
   def update
     @requirement = Requirement.find(params[:id])
+    @team = @requirement.team
     if @requirement.kind_of? UserStory
       @requirement.update_attributes(user_story_params)
       flash[:success] = 'Informações alteradas!'
@@ -50,20 +61,34 @@ class RequirementsController < ApplicationController
 
   private
 
-  def requirement_params 
+  def requirement_params
     params.require(:requirement).permit(:code, :type, :description, :priority, :team_id, :user_id)
   end
 
-  def user_story_params 
+  def user_story_params
     params.require(:user_story).permit(:code, :type, :description, :priority, :team_id, :user_id)
   end
 
-  def feature_params 
+  def feature_params
     params.require(:feature).permit(:code, :type, :description, :priority, :team_id, :user_id)
   end
 
-  def investiment_theme_params 
+  def investiment_theme_params
     params.require(:investiment_theme).permit(:code, :type, :description, :priority, :team_id, :user_id)
+  end
+
+  def only_members
+    @team = Team.find(params[:id])
+
+    if current_user == nil
+      flash.now[:danger] = 'Este time está privado. Você precisa estar logado.'
+      redirect_to signin_path
+    elsif current_user != @team.user || current_user.member_of?(@team)
+        flash[:danger] = 'Você precisa ser um membro deste time.'
+        redirect_to teams_path
+    else
+      #nothing to do
+    end
   end
 
 end

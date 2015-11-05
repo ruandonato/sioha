@@ -1,5 +1,7 @@
 <%= @requirement.description %>
 
-<center>
-  <%= link_to 'Editar Requisito', edit_requirement_path(id: @requirement.id), class: 'btn btn-lg btn-info' %>
-</center>
+<% if current_user && @requirement.author == current_user %>
+  <center>
+    <%= link_to 'Editar Requisito', edit_requirement_path(id: @requirement.id), class: 'btn btn-lg btn-info' %>
+  </center>
+<% end %>
