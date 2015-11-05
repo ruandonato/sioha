@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :teams, only: [:new, :create, :show, :edit, :update, :index]
   resources :requirements, only: [:new, :create, :show, :edit, :update, :index]
+  resources :calendar, only: [:show]
 
   get '/signin' => 'sessions#new'
   get '/signup' => 'users#new'
@@ -27,6 +28,9 @@ Rails.application.routes.draw do
   # requirements controller
   get '/requirements/:id' => 'requirements#show'
   get '/user_story' => 'requirements#edit'
+
+  # calendar controller
+  get 'calendar#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
