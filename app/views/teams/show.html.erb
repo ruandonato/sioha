@@ -8,6 +8,7 @@
 
         <% if current_user == @team.user %>
           <center><%= link_to 'Editar informações do time', edit_team_path(id: @team.id), class: 'btn btn-lg btn-info' %></center>
+          <br><br><br><br><br>
           <h3>Convidar Pessoas</h3>
           <%= form_tag("/teams/#{@team.id}/invite", method: "get") do %>
             <%= text_field_tag :keyword, params[:keyword], class: "search-text-field", placeholder: "nome do usuário" %>
@@ -15,11 +16,13 @@
           <% end %>
         <% end %>
 
+        <br><br><br><br><br>
         <h1>Owner</h1>
         <div class='row'>
           <%= render 'shared/user', t: @team.user %>
         </div>
 
+        <br><br>
         <h1>Membros (<%= @members.count %>)</h1>
         <% @members.each do |m| %>
           <div class='row'>
