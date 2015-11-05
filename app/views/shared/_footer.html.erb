@@ -11,13 +11,23 @@
       <div class='col-md-4'>
         <nav>
           <ul>
-            <li class='attention-footer'>Navegação</li>
-            <li><%= link_to 'Sobre', '#' %></li>
-            <li><%= link_to 'Ajuda', '#' %></li>
-            <li><%= link_to 'Contribua!', '#' %></li>
-            <li><%= link_to 'FAQ', '#' %></li>
-            <li><%= link_to 'Logar', '#' %></li>
-            <li><%= link_to 'Deslogar', '#' %></li>
+            <% if signed_in? %>
+              <li class='attention-footer'>Navegação</li>
+              <li><%= link_to 'Sobre', '#' %></li>
+              <li><%= link_to 'Ajuda', '#' %></li>
+              <li><%= link_to 'Contribua!', '#' %></li>
+              <li><%= link_to 'FAQ', '#' %></li>
+              <li><%= link_to "#{current_user.name}", current_user %></li>
+              <li><%= link_to 'Deslogar', signout_path, method: :delete %></li>
+            <% else %>
+              <li class='attention-footer'>Navegação</li>
+              <li><%= link_to 'Sobre', '#' %></li>
+              <li><%= link_to 'Ajuda', '#' %></li>
+              <li><%= link_to 'Contribua!', '#' %></li>
+              <li><%= link_to 'FAQ', '#' %></li>
+              <li><%= link_to 'Registrar', signup_path %></li>
+              <li><%= link_to 'Logar', signin_path %></li>
+            <% end %>
           </ul>
         </nav>
       </div>
