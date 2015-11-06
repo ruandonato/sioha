@@ -33,7 +33,6 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.user = current_user
-
     if(@team.save)
       redirect_to @team
     else
@@ -113,27 +112,6 @@ class TeamsController < ApplicationController
     @requirements = @team.requirements
     respond_to do |format|
       format.js
-    end
-  end
-
-  def new_requirement
-    @team = Team.find(params[:team_id])
-    @user = User.find(params[:user_id])
-    @requirement = Requirement.new(team: @team, author: @user)
-  end
-
-  def create_requirement
-    @team = Team.find(params[:team_id])
-    @user = User.find(params[:user_id])
-
-    @requirement = Requirement.new(requirement_params)
-    @requirement.team = @team
-    @requirement.author = @user
-
-    if @requirement.save
-      redirect_to @team
-    else
-      render 'new_requirement'
     end
   end
 
