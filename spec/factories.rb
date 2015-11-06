@@ -12,4 +12,11 @@ FactoryGirl.define do
     email                 "SIOHINHA@siohinha.com"
     description           "balblalbalbalbla"
   end
+
+  factory :requirement do
+    code                  "US00002"
+    description           "Uma estoria muito loka"
+    type                  "UserStory"
+    priority              "high"
+  end
 end
