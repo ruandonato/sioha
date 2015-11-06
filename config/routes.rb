@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get '/user_story' => 'requirements#edit'
 
   # calendar controller
-  get 'calendar#show'
+  get 'calendar#show' => 'calendar#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

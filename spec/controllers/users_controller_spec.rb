@@ -9,7 +9,7 @@ RSpec.describe UsersController, type: :controller do
 
   before do
     @user = User.new(email: 'sanjana@gmail.com', password: 'sanjana123',
-                    password_confirmation: 'sanjana123')
+                    password_confirmation: 'sanjana123', name: 'oldname')
     @user.save
 
     @another_user = User.new(email: 'sanjana222@gmail.com', password: 'sanjana123',
@@ -90,5 +90,37 @@ RSpec.describe UsersController, type: :controller do
       end
 
     end
+  end
+
+  describe "PUT" do
+    describe '#update' do
+      context 'with valid params' do
+        before do
+          sign_in @user
+        end
+        subject { put :update, id: @user.id, user: { name: 'anewname', password: 'sanjana123', password_confirmation: 'sanjana123',
+                                                     email: 'sanjana@gmail.com'} }
+        it "should change the current user name" do
+          subject
+          @user.reload
+          expect(@user.name).to eq("anewname")
+        end
+      end
+
+      context 'with invalid params' do
+        before do
+          sign_in @user
+        end
+
+        subject { put :update, id: @user.id, user: { name: 'an', password: 'sanjana123', password_confirmation: 'sanjana123',
+                                                     email: 'sanaaa' } }
+        it "should not change the current user name" do
+          subject
+          @user.reload
+          expect(@user.email).to eq("sanjana@gmail.com")
+        end
+      end
+    end
+
   end
 end

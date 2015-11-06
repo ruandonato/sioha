@@ -46,13 +46,13 @@ class User < ActiveRecord::Base
   # this method check and controls the flow of a pending call
   def pending_to?(team)
     invite = Invite.find_by(team: team, user: self)
-    
+
     if invite
       pending_result = invite.pending # true = invited but not accepted, false = invited and accepted
     else
       pending_result =  nil # nil = the invite isn't even created
     end
-    
+
     return pending_result
   end
 
@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   def picture_size
     if picture.size > 5.megabytes
       errors.add(:picture, "should be less than 5MB")
-    else 
+    else
       # nothing to do
     end
   end
