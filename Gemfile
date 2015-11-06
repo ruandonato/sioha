@@ -21,6 +21,7 @@ gem 'fog'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'font-awesome-sass'
+gem 'factory_girl_rails'
 gem 'gravtastic'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

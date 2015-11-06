@@ -50,7 +50,7 @@ RSpec.describe Team, :type => :model do
     end
 
   #tests if there is duplicate teams
-    describe "duplicated process_number" do
+  describe "duplicated process_number" do
       it "should not be_valid" do
         duplicated_team = Team.new
         duplicated_team.name= "SiohaTecproggers"
@@ -58,4 +58,5 @@ RSpec.describe Team, :type => :model do
         expect(duplicated_team).not_to be_valid
     end
   end
+
 end
