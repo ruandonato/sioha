@@ -30,11 +30,11 @@ class Team < ActiveRecord::Base
 
   def upstream_traceability_scope(type)
     if type == "UserStory"
-      return this.requirements.features
+      return self.requirements.features
     elsif type == "InvestimentTheme"
       # investiment themes dont have a upstream traceability
     elsif type == "Feature"
-      return this.requirements.features
+      return self.requirements.investiment_themes
     end
   end
 
@@ -42,9 +42,9 @@ class Team < ActiveRecord::Base
     if type == "UserStory"
       # stories dont have an downstream traceability
     elsif type == "InvestimentTheme"
-      return this.requirements.features
+      return self.requirements.features
     elsif type == "Feature"
-      return this.requirements.stories
+      return self.requirements.stories
     end
   end
 

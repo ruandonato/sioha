@@ -59,4 +59,41 @@ RSpec.describe Team, :type => :model do
     end
   end
 
+  describe '#upstream_traceability_scope' do
+    context 'for user_story' do
+      subject { @team.upstream_traceability_scope("UserStory") }
+      it 'should return the team features' do
+        expect(subject).to eq(@team.requirements.features)
+      end
+    end
+
+    context 'for features' do
+      subject { @team.upstream_traceability_scope("Feature") }
+      it 'should return the team investiment themes' do
+        expect(subject).to eq(@team.requirements.investiment_themes)
+      end
+    end
+  end
+
+  describe 'downstream_traceability_scope' do
+    context 'for user_story' do
+      subject { @team.downstream_traceability_scope("UserStory") }
+      # do nothing
+    end
+
+    context 'for features' do
+      subject { @team.downstream_traceability_scope("Feature") }
+      it 'should return the team stories' do
+        expect(subject).to eq(@team.requirements.stories)
+      end
+    end
+
+    context 'for investiment themes' do
+      subject { @team.downstream_traceability_scope("InvestimentTheme") }
+      it 'should return the team features' do
+        expect(subject).to eq(@team.requirements.features)
+      end
+    end
+  end
+
 end
