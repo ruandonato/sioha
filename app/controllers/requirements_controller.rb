@@ -27,20 +27,8 @@ class RequirementsController < ApplicationController
   def update
     @requirement = Requirement.find(params[:id])
     @team = @requirement.team
-
-    if @requirement.kind_of? UserStory
-      @requirement.update_attributes(user_story_params)
-      @requirement.save
-      flash[:success] = 'Informações alteradas!'
-      redirect_to '/requirements/' + @requirement.id.to_s
-    elsif @requirement.kind_of? Feature
-      @requirement.update_attributes(feature_params)
-      @requirement.save
-      flash[:success] = 'Informações alteradas!'
-      redirect_to '/requirements/' + @requirement.id.to_s
-    elsif @requirement.kind_of? InvestimentTheme
-      @requirement.update_attributes(investiment_theme_params)
-      @requirement.save
+    @requirement.update_attributes("#{@requirement.class.to_s.downcase}_params")
+    if @requirement.save
       flash[:success] = 'Informações alteradas!'
       redirect_to '/requirements/' + @requirement.id.to_s
     else
