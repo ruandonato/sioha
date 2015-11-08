@@ -115,12 +115,23 @@ class TeamsController < ApplicationController
     end
   end
 
+  def wiki
+    @team = Team.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def edit_wiki
+    @team = Team.find(params[:id])
+  end
+
   # this method passing parameters to the edit page and creating team
   private
 
   def team_params
     params.require(:team).permit(:name, :description, :user_id, :email, :picture,
-                                 :public_to_members, :methodology)
+                                 :public_to_members, :methodology, :wiki)
   end
 
   # this method prohibits non-members to see a private team

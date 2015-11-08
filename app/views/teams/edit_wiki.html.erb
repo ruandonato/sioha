@@ -1,0 +1,10 @@
+<div class='wiki-edit-page'>
+  <h1>Editar Wiki</h1>
+  <%= form_for(@team) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.text_area :wiki, class: 'form-control' %>
+
+    <center><%= f.submit 'Alterar Informações', class: "btn btn-primary btn-lg" %></center>
+  <% end %>
+</div>

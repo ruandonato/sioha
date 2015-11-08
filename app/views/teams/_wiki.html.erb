@@ -1,0 +1,6 @@
+<div class='team-wiki'>
+  <%= link_to 'Editar Wiki', '/teams/'+@team.id.to_s+'/wiki/edit', class: "btn btn-success" %>
+  <div class='wiki-page'>
+    <%= markdown(@team.wiki) %>
+  </div>
+</div>

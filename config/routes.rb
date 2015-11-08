@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get '/refuse_invite' => 'teams#refuse_invite'
   get '/myteams' => 'teams#myteams'
   get '/teams/:id/team_requirements' => 'teams#team_requirements'
+  get '/teams/:id/wiki' => 'teams#wiki'
+  get '/teams/:id/wiki/edit' => 'teams#edit_wiki'
 
   # invites controller
   get '/invites' => 'invites#index'
