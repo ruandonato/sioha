@@ -134,19 +134,4 @@ class TeamsController < ApplicationController
                                  :public_to_members, :methodology, :wiki)
   end
 
-  # this method prohibits non-members to see a private team
-  def only_members
-    @team = Team.find(params[:id])
-
-    if current_user == nil
-      flash.now[:danger] = 'Este time está privado. Você precisa estar logado.'
-      redirect_to signin_path
-    elsif current_user != @team.user || current_user.member_of?(@team)
-        flash[:danger] = 'Você precisa ser um membro deste time.'
-        redirect_to teams_path
-    else
-      #nothing to do
-    end
-  end
-
 end

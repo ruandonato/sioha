@@ -27,9 +27,6 @@ class RequirementsController < ApplicationController
   def update
     @requirement = Requirement.find(params[:id])
     @team = @requirement.team
-    puts "="*80
-    puts @requirement.priority
-    puts "="*80
 
     if @requirement.kind_of? UserStory
       @requirement.update_attributes(user_story_params)
@@ -84,19 +81,5 @@ class RequirementsController < ApplicationController
     params.require(:investiment_theme).permit(:code, :type, :description, :priority, :team_id, :user_id)
   end
 
-  def only_members
-    @requirement = Requirement.find(params[:id])
-    @team = @requirement.team
-
-    if current_user == nil
-      flash.now[:danger] = 'Este time está privado. Você precisa estar logado.'
-      redirect_to signin_path
-    elsif current_user != @team.user || current_user.member_of?(@team)
-        flash[:danger] = 'Você precisa ser um membro deste time.'
-        redirect_to teams_path
-    else
-      #nothing to do
-    end
-  end
 
 end

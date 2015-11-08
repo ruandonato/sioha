@@ -50,11 +50,26 @@ class ApplicationController < ActionController::Base
   # this method will redirect the user to the main page if the filter does not pass
   def correct_user
     @user = User.find(params[:id])
-    
+
     if @user != current_user
      redirect_to(root_path)
     else
       # nothing to do
+    end
+  end
+  
+  def only_members
+    @requirement = Requirement.find(params[:id])
+    @team = @requirement.team
+
+    if current_user == nil
+      flash.now[:danger] = 'Este time está privado. Você precisa estar logado.'
+      redirect_to signin_path
+    elsif current_user != @team.user || current_user.member_of?(@team)
+        flash[:danger] = 'Você precisa ser um membro deste time.'
+        redirect_to teams_path
+    else
+      #nothing to do
     end
   end
 
