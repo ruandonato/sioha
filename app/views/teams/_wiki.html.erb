@@ -1,3 +1,11 @@
+<nav class="navbar navbar-default">
+  <ul class='nav navbar-nav'>
+    <li><%= link_to "Home", @team, class: "team-sidebar show-link", id: @team.id %></li>
+    <li><%= link_to "Requisitos", '/teams/'+@team.id.to_s+'/team_requirements/', class: "team-sidebar requirements-link", id: @team.id, remote: true %></li>
+    <li><%= link_to "Wiki", '/teams/'+@team.id.to_s+'/wiki', class: "team-sidebar wiki-link-selected", id: @team.id, remote: true %></li>
+  </ul>
+</nav>
+
 <div class='team-wiki'>
   <%= link_to 'Editar Wiki', '/teams/'+@team.id.to_s+'/wiki/edit', class: "btn btn-success" %>
   <div class='wiki-page'>

@@ -6,7 +6,7 @@
 
 class TeamsController < ApplicationController
   # these two methods gives access to controll teams only for users
-  before_action :require_login, only: [:new, :create, :index]
+  before_action :require_login, only: [:new, :create, :index, :invite]
   before_action :only_members, only: [:invite, :show_private_team]
 
   # action that renders the new page of the teams controller

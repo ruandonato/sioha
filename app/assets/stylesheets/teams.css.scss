@@ -201,3 +201,150 @@ div.col-md-4.teams-photo {
   display: block;
 
 }
+
+/* sidebar */
+.team-sidebar {
+  font-family: Muli;
+  font-weight: 900;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+}
+
+.requirements-link {
+  color: #36b5a2;
+  text-decoration: none;
+  border-bottom: 10px solid #bbb;
+  margin-bottom: 25px;
+
+  &:hover {
+    color: #36b5a2;
+    border-bottom: 10px solid #36b5a2;
+  }
+}
+
+.wiki-link {
+  color: #6336b5;
+  text-decoration: none;
+  border-bottom: 10px solid #bbb;
+  margin-bottom: 25px;
+
+  &:hover {
+    color: #6336b5;
+    border-bottom: 10px solid #6336b5;
+  }
+}
+
+/* _header */
+.teams-show-page {
+  .navbar.navbar-default {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    background: white;
+    color: rgb(143, 153, 140);
+
+    .nav.navbar-nav {
+      li {
+        padding: 5px;
+        a {
+          font-weight: 900;
+          color: $color-primary-1;
+        }
+      }
+
+      .wiki-link {
+        color: #1f1f1f;
+        text-decoration: none;
+        border-bottom: 10px solid #bbb;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #6336b5;
+          border-bottom: 10px solid #6336b5;
+        }
+      }
+
+      .wiki-link-selected {
+        color: #6336b5;
+        text-decoration: none;
+        border-bottom: 10px solid #6336b5;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #6336b5;
+          border-bottom: 10px solid #6336b5;
+        }
+      }
+
+      .requirements-link {
+        color: #1f1f1f;
+        text-decoration: none;
+        border-bottom: 10px solid #bbb;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #36b5a2;
+          border-bottom: 10px solid #36b5a2;
+        }
+      }
+
+      .requirements-link-selected {
+        color: #36b5a2;
+        text-decoration: none;
+        border-bottom: 10px solid #36b5a2;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #36b5a2;
+          border-bottom: 10px solid #36b5a2;
+        }
+      }
+
+      .show-link {
+        text-decoration: none;
+        color: #1f1f1f;
+        border-bottom: 10px solid #bbb;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #59b536;
+          border-bottom: 10px solid #59b536;
+        }
+      }
+
+      .show-link-selected {
+        text-decoration: none;
+        color: #59b536;
+        border-bottom: 10px solid #59b536;;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #59b536;
+          border-bottom: 10px solid #59b536;
+        }
+      }
+    }
+  }
+}

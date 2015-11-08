@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
       # nothing to do
     end
   end
-  
+
   def only_members
     @requirement = Requirement.find(params[:id])
     @team = @requirement.team
@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
     if current_user == nil
       flash.now[:danger] = 'Este time está privado. Você precisa estar logado.'
       redirect_to signin_path
-    elsif current_user != @team.user || current_user.member_of?(@team)
+    elsif current_user != @team.user && current_user.member_of?(@team)
         flash[:danger] = 'Você precisa ser um membro deste time.'
         redirect_to teams_path
     else
