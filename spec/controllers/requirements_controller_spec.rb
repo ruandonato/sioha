@@ -33,4 +33,34 @@ RSpec.describe RequirementsController, type: :controller do
       end
     end
   end
+
+  describe "POST" do
+    describe '#create' do
+      context 'with valid params' do
+        before do
+          sign_in @user
+        end
+
+        it "should increase total number of requirements of a given team" do
+          total = @team.requirements.count
+          post :create, team_id: @team.id, user_id: @user.id, requirement: { code: "US002002", description: "NICE STORY BRO", type: "UserStory", priority: "high" }
+          @team.requirements.reload
+          expect(@team.requirements.count).to eq(total+1)
+        end
+      end
+
+      context 'with invalid params' do
+        before do
+          sign_in @user
+        end
+
+        it "should not increase total number of requirements of a given team" do
+          total = @team.requirements.count
+          post :create, team_id: @team.id, user_id: @user.id, requirement: { code: "U", description: "NICE STORY BRO", type: "UserStory", priority: "high" }
+          @team.requirements.reload
+          expect(@team.requirements.count).to eq(total) # total number of requirements will not change
+        end
+      end
+    end
+  end
 end
