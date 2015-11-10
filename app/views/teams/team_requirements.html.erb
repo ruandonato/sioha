@@ -1,1 +1,47 @@
-<h2>bem vindo</h2>
+<nav class="navbar navbar-default">
+
+  <ul class='nav navbar-nav'>
+    <li><%= link_to "Home", @team, class: "team-sidebar show-link", id: @team.id %></li>
+    <li><%= link_to "Requisitos", '/teams/'+@team.id.to_s+'/team_requirements/', class: "team-sidebar requirements-link-selected", id: @team.id, remote: true %></li>
+    <li><%= link_to "Wiki", '/teams/'+@team.id.to_s+'/wiki', class: "team-sidebar wiki-link", id: @team.id, remote: true %></li>
+  </ul>
+
+</nav>
+<div class='team-requirements'>
+  <h1>Requisitos</h1>
+
+  <% if current_user && current_user.member_of?(@team) || @team.user == current_user %>
+    <%= link_to 'Novo Requisito', new_requirement_path(team_id: @team.id, user_id: current_user.id), class: "btn btn-success" %>
+  <% end %>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>Nome</td>
+        <td>Código</td>
+        <td>Classe</td>
+        <td>Prioridade</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @team.requirements.each do |b| %>
+        <tr>
+          <td><%= link_to b.description, '/requirements/'+b.id.to_s, class: "" %></td>
+          <td><%= link_to b.code, '#', class: "" %></td>
+          <td><%= link_to b.class, '#', class: "" %></td>
+          <% if b.priority == "high" %>
+            <td><%= link_to "Alta", '/requirements/'+b.id.to_s, class: "" %></td>
+          <% elsif b.priority == "medium" %>
+            <td><%= link_to "Média", '/requirements/'+b.id.to_s, class: "" %></td>
+          <% elsif b.priority == "low" %>
+            <td><%= link_to "Baixa", '/requirements/'+b.id.to_s, class: "" %></td>
+          <% else %>
+            <td>?</td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+
+  </table>
+</div>

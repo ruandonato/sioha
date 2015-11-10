@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login
-    if signed_in? == false
+    if not signed_in?
       flash[:danger] = "Esta ação requer que o usuário esteja logado."
       redirect_to signin_path
     else

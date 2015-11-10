@@ -8,6 +8,7 @@ class TeamsController < ApplicationController
   # these two methods gives access to controll teams only for users
   before_action :require_login, only: [:new, :create, :index, :invite]
   before_action :only_members, only: [:invite, :show_private_team]
+  before_action :unique_invite, only: [:invite_member]
 
   # action that renders the new page of the teams controller
   def new
@@ -112,6 +113,7 @@ class TeamsController < ApplicationController
     @requirements = @team.requirements
     respond_to do |format|
       format.js
+      format.html
     end
   end
 
@@ -128,6 +130,18 @@ class TeamsController < ApplicationController
 
   # this method passing parameters to the edit page and creating team
   private
+
+  def unique_invite
+    @team = Team.find(params[:id])
+    @user = User.find(params[:user_id])
+    invite = Invite.find_by(user: @user, team: @team)
+    if invite
+      redirect_to @team
+      flash[:danger] = 'Este usuário já tem um convite pendente para este time!'
+    else
+      # do nothing
+    end
+  end
 
   def team_params
     params.require(:team).permit(:name, :description, :user_id, :email, :picture,

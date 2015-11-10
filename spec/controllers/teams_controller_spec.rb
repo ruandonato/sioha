@@ -6,13 +6,10 @@
 
 require 'rails_helper'
 
-
 RSpec.describe TeamsController, type: :controller do
 
 before do
-    @user = User.new(email: 'sanjana@gmail.com', password: 'sanjana123',
-                    password_confirmation: 'sanjana123')
-    @user.save
+    @user = FactoryGirl.create(:user)
 
     @team = Team.new(name: "SiohaTecproggers", description: "The agile resistence!", user: @user,
                     methodology: "SAFe", public_to_members: true, email: "siohatecprog@gmai.com")
@@ -21,6 +18,26 @@ before do
   end
 
   describe "GET" do
+    describe '#invite_member' do
+      before do
+        sign_in @user
+      end
+
+      it "should create a new invite" do
+        total = Invite.all.count
+        get :invite_member, id: @team.id, user_id: @user.id
+        expect(Invite.all.count).to eq(total+1)
+      end
+
+      it 'should have only one invite by team-member pair' do
+        total = Invite.all.count
+        get :invite_member, id: @team.id, user_id: @user.id
+        expect(Invite.all.count).to eq(total+1)
+        get :invite_member, id: @team.id, user_id: @user.id
+        expect(Invite.all.count).to eq(total+1) # total not increased by last #invite_member call
+      end
+    end
+
     describe '#new' do
       context "logged user" do
         it 'should return sucess' do
@@ -96,6 +113,7 @@ before do
           before do
             sign_in @user
           end
+
           subject { post :create, team: { name: "SIOHATECPROGGERSzz", description: "balblaleaeabalbalbla", user: @user } }
           it "should create a new user" do
             total = Team.all.count
@@ -103,6 +121,34 @@ before do
             Team.all.reload
             new_total = Team.all.count
             expect(new_total).to eq(total+1)
+          end
+        end
+
+        context 'with unlogged user' do
+          subject { post :create, team: { name: "SIOHATECPROGGERSzz", description: "balblaleaeabalbalbla", user: @user } }
+          it "should not create a new user" do
+            total = Team.all.count
+            subject
+            Team.all.reload
+            new_total = Team.all.count
+            expect(new_total).not_to eq(total+1)
+          end
+        end
+
+        context 'with logged user' do
+          describe 'with invalid params' do
+            before do
+              sign_in @user
+            end
+
+            subject { post :create, team: { name: "sioh", description: "a"*45, user: @user } }
+            it "should not create a new user" do
+              total = Team.all.count
+              subject
+              Team.all.reload
+              new_total = Team.all.count
+              expect(new_total).not_to eq(total+1)
+            end
           end
         end
       end
