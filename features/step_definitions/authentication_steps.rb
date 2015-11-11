@@ -91,6 +91,41 @@ Then(/^the system displays a message 'Password confirmation doesn't match Passwo
 	page.should have_content("Password confirmation doesn't match Password")
 end
 
+Given(/^that I'm a registered user$/) do
+	@user = User.new;
+	@user.name = 'Teste'
+	@user.email = 'Teste@teste.com'
+	@user.password = 'teste123'
+	@user.password_confirmation = 'teste123'
+
+	@user.save
+end
+
+Given(/^I'm on the login page$/) do
+	visit '/signin'
+end
+
+When(/^I fill in the fields with the registered data$/) do
+	fill_in 'session_email', :with=> "Teste@teste.com"
+	fill_in 'session_password', :with=> "teste123"
+end
+
+When(/^click te button Save Session$/) do
+	click_button 'Save Session'
+end
+
+Then(/^I'm logged in$/) do
+	page.should have_content ("Lista de Times")
+end
+
+When(/^I fill the fields with unregistered data$/) do
+	fill_in 'session_email', :with=> "unregisteredData@teste.com"
+	fill_in 'session_password', :with=> "Invalid"
+end
+
+Then(/^the system should displays a message 'Invalid Combination'$/) do
+	page.should have_content ("Invalid combination.")
+end
 
 
 
