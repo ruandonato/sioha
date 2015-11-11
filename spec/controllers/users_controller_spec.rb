@@ -8,18 +8,22 @@ RSpec.describe UsersController, type: :controller do
   include SessionsHelper
 
   before do
+  #instantiate a user with the mandatory params
     @user = User.new(email: 'sanjana@gmail.com', password: 'sanjana123',
                     password_confirmation: 'sanjana123', name: 'oldname')
     @user.save
 
+#instantiate a another user with the mandatory params
     @another_user = User.new(email: 'sanjana222@gmail.com', password: 'sanjana123',
                     password_confirmation: 'sanjana123')
     @another_user.save
 
+#instantiate a user with the mandatory params
     @other_user = { email: 'sanjana2@gmail.com', password: 'sanjana123',
                     password_confirmation: 'sanjana123' }
   end
 
+#checks if a controller_user calls a view new to creat a new user 
   describe "GET" do
     describe '#new' do
       it "should have http_status success" do
@@ -28,6 +32,7 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
+#checks if a controller_user calls a view edit to edit a new user 
     describe '#edit' do
       context 'logged and with the correct user' do
         it "should return success" do
@@ -37,6 +42,7 @@ RSpec.describe UsersController, type: :controller do
         end
       end
 
+#redirect a user to initial page if he is not logged in system
       context 'not logged' do
         it "should redirect" do
           get :edit, id: @user.id
@@ -44,6 +50,7 @@ RSpec.describe UsersController, type: :controller do
         end
       end
 
+#redirect a user to initial page if his login is incorrect
       context 'with the wrong user' do
         context 'not logged' do
           it "should redirect" do
@@ -54,8 +61,9 @@ RSpec.describe UsersController, type: :controller do
         end
       end
 
-    end
+  end
 
+#checks users logged, and redirect to show_user
     describe '#show' do
       context 'signed user' do
         it "should have http_status success" do
@@ -68,6 +76,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "POST" do
+  #check if a user is created with valid params
     describe '#create' do
       context 'with valid params' do
         subject { post :create, :user => @other_user }
@@ -77,11 +86,12 @@ RSpec.describe UsersController, type: :controller do
           expect(get :show, :id => new_user.id).to have_http_status(:success)
         end
 
+#If a user is valid, increments a user in total number of users
         it "should increase total number of users" do
           expect { subject }.to change(User, :count).by(1)
         end
       end
-
+  #check if a user is created with invalid params
       context 'with invalid params' do
         it "should not create user with invalid params" do
           post :create, :user => { :email => @user.email, :password => 'anewuserpassword', :password_confirmation => 'anewuserpassword' }
