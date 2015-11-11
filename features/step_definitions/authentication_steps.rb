@@ -93,10 +93,9 @@ end
 
 Given(/^that I'm a registered user$/) do
 	@user = User.new;
-	@user.name = 'Teste'
-	@user.email = 'Teste@teste.com'
-	@user.password = 'teste123'
-	@user.password_confirmation = 'teste123'
+	@user.email = 'rhianna@bruen.org'
+	@user.password = 'Teste123'
+	@user.password_confirmation = 'Teste123'
 
 	@user.save
 end
@@ -106,8 +105,8 @@ Given(/^I'm on the login page$/) do
 end
 
 When(/^I fill in the fields with the registered data$/) do
-	fill_in 'session_email', :with=> "Teste@teste.com"
-	fill_in 'session_password', :with=> "teste123"
+	fill_in 'session_email', :with=> "rhianna@bruen.org"
+	fill_in 'session_password', :with=> "Teste123"
 end
 
 When(/^click te button Save Session$/) do
@@ -115,7 +114,7 @@ When(/^click te button Save Session$/) do
 end
 
 Then(/^I'm logged in$/) do
-	page.should have_content ("Lista de Times")
+	page.should have_content ("Seus Times")
 end
 
 When(/^I fill the fields with unregistered data$/) do
@@ -126,6 +125,45 @@ end
 Then(/^the system should displays a message 'Invalid Combination'$/) do
 	page.should have_content ("Invalid combination.")
 end
+
+When(/^I click the button Lista de Times$/) do
+	click_link 'Lista de Times'
+end
+
+When(/^click the button Criar Time$/) do
+	click_link 'Criar Time'
+end
+
+When(/^fill in all fields correctly$/) do
+		fill_in 'team_name', :with=> "TeamTeste"
+		fill_in 'team_description', :with=> "Time feito para teste"
+		fill_in 'team_email', :with=> "Teste@teste.com"
+		page.find(:radio_button, 'team_public_to_members_true').set(true)
+		page.find(:radio_button, 'team_methodology_safe').set(true)
+
+end
+
+Then(/^the team should be created$/) do
+	page.should have_content("Owner")
+end
+
+Given(/^that I filled all fields correctly$/) do
+	fill_in 'session_email', :with=> "rhianna@bruen.org"
+	fill_in 'session_password', :with=> "Teste123"
+end
+
+Given(/^clicked the button Save Session$/) do
+	click_button 'Save Session'
+end
+
+When(/^click the button Criar Time again$/) do
+	click_button 'Criar Time'
+end
+
+
+
+
+
 
 
 
