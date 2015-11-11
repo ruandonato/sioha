@@ -8,11 +8,13 @@ require 'rails_helper'
 
 RSpec.describe Team, :type => :model do
 
+#instantiate a user with the mandatory params
   before do
     @user = User.new(email: 'sanjana@gmail.com', password: 'sanjana123',
                     password_confirmation: 'sanjana123')
     @user.save
 
+#instantiate a team with the mandatory params
     @team = Team.new(name: "SiohaTecproggers", description: "The agile resistence!", user: @user,
                     methodology: "SAFe", public_to_members: true, email: "siohatecprog@gmai.com")
     @team.save
@@ -25,6 +27,7 @@ RSpec.describe Team, :type => :model do
      }
   it { expect(@user).to be_valid }
 
+#check if a team have pending invites
   describe '#pending_invites' do
     context 'with no pending invites' do
       it 'should return nothing' do
