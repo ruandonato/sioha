@@ -144,7 +144,7 @@ When(/^fill in all fields correctly$/) do
 end
 
 Then(/^the team should be created$/) do
-	page.should have_content("Owner")
+	page.should have_content("Teste")
 end
 
 When(/^click the button Criar Time again$/) do
