@@ -147,21 +147,86 @@ Then(/^the team should be created$/) do
 	page.should have_content("Owner")
 end
 
-Given(/^that I filled all fields correctly$/) do
-	fill_in 'session_email', :with=> "rhianna@bruen.org"
-	fill_in 'session_password', :with=> "Teste123"
-end
-
-Given(/^clicked the button Save Session$/) do
-	click_button 'Save Session'
-end
-
 When(/^click the button Criar Time again$/) do
 	click_button 'Criar Time'
 end
 
+Then(/^the system should dysplay a message 'Esta ação requer que o usuário esteja logado\.'$/) do
+	page.should have_content("Esta ação requer que o usuário esteja logado.")
+end
+
+When(/^fill in the name field with a short name$/) do
+		fill_in 'team_name', :with=> "Team"
+		fill_in 'team_description', :with=> "Time feito para teste"
+		fill_in 'team_email', :with=> "Teste@teste.com"
+		page.find(:radio_button, 'team_public_to_members_true').set(true)
+		page.find(:radio_button, 'team_methodology_safe').set(true)
+end
+
+Then(/^the system should display a message 'Name is too short \(minimum is (\d+) characters\)'$/) do |arg1|
+	page.should have_content("Name is too short (minimum is 6 characters)")
+end
+
+When(/^fill in the description field with a description name$/) do
+		fill_in 'team_name', :with=> "Team"
+		fill_in 'team_description', :with=> "teste"
+		fill_in 'team_email', :with=> "Teste@teste.com"
+		page.find(:radio_button, 'team_public_to_members_true').set(true)
+		page.find(:radio_button, 'team_methodology_safe').set(true)
+end
+
+Then(/^the system should display a message 'Description is too short \(minimum is (\d+) characters\)'$/) do |arg1|
+	page.should have_content("Description is too short (minimum is 10 characters)")
+end
+
+Given(/^I'm logged$/) do
+	visit '/signin'
+
+	fill_in 'session_email', :with=> "rhianna@bruen.org"
+	fill_in 'session_password', :with=> "Teste123"
+
+	click_button 'Save Session'
+
+end
+
+Given(/^I'm on the page to edit my profile$/) do
+	visit '/users/1/edit'
+end
+
+When(/^I fill all the correct fields$/) do
+	fill_in 'user_name', :with=> "Orland Dooley"
+	fill_in 'user_email', :with=> "Teste@teste.com"
+	fill_in 'user_password', :with=> "Teste123"
+end
+
+When(/^click the button Alterar Informações$/) do
+	click_button 'Alterar Informações'
+end
+
+Then(/^the system should a message 'Informações alteradas!'$/) do
+	page.should have_content("Informações alteradas!")
+end
 
 
+When(/^I fill the password field with a short password$/) do
+	fill_in 'user_name', :with=> "Orland Dooley"
+	fill_in 'user_email', :with=> "Teste@teste.com"
+	fill_in 'user_password', :with=> "Teste"
+end
+
+Then(/^the system should a message 'Password is too short \(minimum is (\d+) characters\)'$/) do |arg1|
+	page.should have_content("Password is too short (minimum is 6 characters)")
+end
+
+When(/^I fill an email field with an invalid email$/) do
+	fill_in 'user_name', :with=> "Orland Dooley"
+	fill_in 'user_email', :with=> "Teste@test"
+	fill_in 'user_password', :with=> "Teste"
+end
+
+Then(/^the system should a message 'Email is invalid'$/) do
+	page.should have_content("Email is invalid")
+end
 
 
 
