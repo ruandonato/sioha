@@ -1,0 +1,53 @@
+<div class='team-index-show-block'>
+  <div class="container">
+    <div class="row-fluid">
+      <div class="col-md-4">
+        <% if t.picture? %>
+          <%= image_tag t.picture.url, size: "300x250" %>
+        <% else %>
+          <%= image_tag t.gravatar_url, size: "300x250" %>
+        <% end %>
+      </div>
+
+      <div class="col-md-8">
+        <h1 class="team-index-show-block-h1"><%= t.name %></h1>
+        <h4><%= t.description %></h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-md-6'>
+      <!-- membros -->
+      <h1>Membros (<%= @members.count+1 %>)</h1>
+      <% if t.user.picture? %>
+        <%= link_to (image_tag t.user.picture.url, style: "border: 3px solid red;"), t.user, title: "Admin" %>
+      <% else %>
+        <%= link_to (image_tag t.user.gravatar_url, style: "border: 3px solid red;"), t.user, title: "Admin" %>
+      <% end %>
+      <% @members.each do |w| %>
+        <% if w.picture? %>
+          <%= link_to (image_tag w.picture.url, style: "border: 3px solid red;"), w, title: "Admin" %>
+        <% else %>
+        <%= link_to (image_tag w.gravatar_url, style: "border: 3px solid red;"), w, title: "Admin" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- infos -->
+    <div class='col-md-6'>
+      <% if t.public_to_members %>
+        <h3 class='team-public'>Aberto</h3>
+      <% else %>
+        <h3 class='team-private'>Privado</h3>
+      <% end %>
+      <% if t.methodology == "Scrum" %>
+        <h3 class='methodology-scrum'><%= t.methodology %></h3>
+      <% elsif t.methodology == "SAFe" %>
+        <h3 class='methodology-safe'><%= t.methodology %></h3>
+      <% else %>
+        <h3 class='methodology-empty'><%= "Metodologia não definida." %></h3>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,38 +1,56 @@
-<div class='teams-show-page'>
-  <div class='row'>
-    <%= render 'shared/team', t: @team %>
+<div class='teams-show-header'>
+<div id="current-show">
+  <div class="teams-show-header">
+    <nav class="navbar navbar-default">
+      <ul class='nav navbar-nav'>
+        <li><%= link_to "Home", @team, class: "team-sidebar show-link", id: @team.id %></li>
+        <li><%= link_to "Requisitos", '/teams/'+@team.id.to_s+'/team_requirements/', class: "team-sidebar requirements-link", id: @team.id, remote: true %></li>
+        <li><%= link_to "Wiki", '/teams/'+@team.id.to_s+'/wiki', class: "team-sidebar wiki-link", id: @team.id, remote: true %></li>
+        <% if @team.user == current_user %>
+          <li><%= link_to 'Editar', edit_team_path(id: @team.id), class: "team-sidebar edit-link" %></li>
+          <li><%= link_to 'Convidar Pessoas', "/teams/#{@team.id}/invite", class: "team-sidebar invite-link-selected" %></li>
+        <% end %>
+      </ul>
+    </nav>
   </div>
 
-  <% if current_user == @team.user %>
-    <h1>Convidar Pessoas</h1>
-    <%= form_tag("/teams/#{@team.id}/invite", method: "get") do %>
-      <%= text_field_tag :keyword, params[:keyword], class: "search-text-field", placeholder: "nome do usuário" %>
-      <%= submit_tag "Buscar", :name => "Busca", class: "search-button" %>
-    <% end %>
-  <% end %>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <td>Nome</td>
-        <td>E-mail</td>
-        <td>Ação</td>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @users.each do |u| %>
-        <tr>
-          <td><%= link_to "#{u.name}", u %></td>
-          <td><%= link_to "#{u.email}", u %></td>
-          <% if u.member_of?(@team) || @team.user == u %>
-            <td><h4>Já é Membro</h4></td>
-          <% else %>
-            <td><%= link_to " ", invite_member_path(user_id: u.id, id: @team.id), class: "btn btn-info glyphicon glyphicon-ok" %></td>
-          <% end %>
-        </tr>
+  <div class='teams-show-page'>
+    <% if current_user == @team.user %>
+      <h1>Convidar Pessoas</h1>
+      <%= form_tag("/teams/#{@team.id}/invite", method: "get") do %>
+        <%= text_field_tag :keyword, params[:keyword], class: "search-text-field", placeholder: "nome do usuário" %>
+        <%= submit_tag "Buscar", :name => "Busca", class: "search-button btn btn-info" %>
       <% end %>
-    </tbody>
-  </table>
-</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Nome</td>
+            <td>E-mail</td>
+            <td>Ação</td>
+          </tr>
+        </thead>
 
+        <tbody>
+          <% @users.each do |u| %>
+            <tr>
+              <td><%= link_to "#{u.name}", u %></td>
+              <td><%= link_to "#{u.email}", u %></td>
+              <% if u.member_of?(@team) || @team.user == u %>
+                <td><span class="btn btn-success glyphicon glyphicon-ok"></span></td>
+              <% else %>
+                <% if Invite.find_by(team: @team, user: u) %>
+                  <td><span class="btn btn-warning glyphicon glyphicon-asterisk"></span></td>
+                <% else %>
+                  <td><%= link_to " ", invite_member_path(user_id: u.id, id: @team.id), class: "btn btn-info glyphicon glyphicon-envelope" %></td>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h1>Você não tem permissão para convidar usuários.</h1>
+    <% end %>
+  </div>
+</div>
+</div>

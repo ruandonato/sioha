@@ -1,38 +1,57 @@
-<div class='users-edit-page'>
-  <h1>Alterando Informações</h1>
-  <%= form_for(@team) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+<div class='teams-show-header'>
+  <div id="current-show">
+    <div class="teams-show-header">
+      <nav class="navbar navbar-default">
+        <ul class='nav navbar-nav'>
+          <li><%= link_to "Home", @team, class: "team-sidebar show-link", id: @team.id %></li>
+          <li><%= link_to "Requisitos", '/teams/'+@team.id.to_s+'/team_requirements/', class: "team-sidebar requirements-link", id: @team.id, remote: true %></li>
+          <li><%= link_to "Wiki", '/teams/'+@team.id.to_s+'/wiki', class: "team-sidebar wiki-link", id: @team.id, remote: true %></li>
+          <% if @team.user == current_user %>
+            <li><%= link_to 'Editar', edit_team_path(id: @team.id), class: "team-sidebar edit-link-selected" %></li>
+            <li><%= link_to 'Convidar Pessoas', "/teams/#{@team.id}/invite", class: "team-sidebar invite-link" %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
 
-    <%= f.label :name, 'Nome' %>
-    <%= f.text_field :name, class: 'form-control' %>
 
-    <%= f.label :description, 'Descrição' %>
-    <%= f.text_field :description, class: 'form-control' %>
+    <div class='users-edit-page'>
+      <h1>Alterando Informações</h1>
+      <%= form_for(@team) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
 
-    <br>  
-    <%= f.label :public_to_members, 'Público?' %>
-    <%= f.radio_button :public_to_members, true, checked: @team.public_to_members, data: { question: 'Publico para todos?' } %>
-    <%= f.label :public_to_members, 'Sim' %>
-    <%= f.radio_button :public_to_members, false, checked: @team.public_to_members, data: { question: 'Publico para todos?' } %>
-    <%= f.label :public_to_members, 'Não' %>
+        <%= f.label :name, 'Nome' %>
+        <%= f.text_field :name, class: 'form-control' %>
 
-    <br>  
-    <%= f.label :methodology, 'Qual a metodologia do time?' %>
-    <%= f.radio_button :methodology, 'SAFe', checked: @team.methodology, data: { question: 'SAFe' } %>
-    <%= f.label :methodology, 'SAFe' %>
-    <%= f.radio_button :methodology, 'Scrum', checked: @team.methodology, data: { question: ' Qual a metodologia do time?' } %>
-    <%= f.label :methodology, 'Scrum' %>
+        <%= f.label :description, 'Descrição' %>
+        <%= f.text_field :description, class: 'form-control' %>
 
-    <span class='picture'>
-      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'btn btn-primary' %>
-    </span>
+        <br>
+        <%= f.label :public_to_members, 'Público?' %>
+        <%= f.radio_button :public_to_members, true, checked: @team.public_to_members, data: { question: 'Publico para todos?' } %>
+        <%= f.label :public_to_members, 'Sim' %>
+        <%= f.radio_button :public_to_members, false, checked: @team.public_to_members, data: { question: 'Publico para todos?' } %>
+        <%= f.label :public_to_members, 'Não' %>
 
-    <center><%= f.submit 'Alterar Informações', class: "btn btn-primary btn-lg" %></center>
-  <% end %>
+        <br>
+        <%= f.label :methodology, 'Qual a metodologia do time?' %>
+        <%= f.radio_button :methodology, 'SAFe', checked: @team.methodology, data: { question: 'SAFe' } %>
+        <%= f.label :methodology, 'SAFe' %>
+        <%= f.radio_button :methodology, 'Scrum', checked: @team.methodology, data: { question: ' Qual a metodologia do time?' } %>
+        <%= f.label :methodology, 'Scrum' %>
+
+        <span class='picture'>
+          <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png', class: 'btn btn-primary' %>
+        </span>
+
+        <center><%= f.submit 'Alterar Informações', class: "btn btn-primary btn-lg" %></center>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">
-  $('#micropost_picture').bind('change', function() {
+  $('.picture').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
     if (size_in_megabytes > 5) {
       alert('Maximum file size is 5MB. Please choose a smaller file.');

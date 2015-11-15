@@ -20,6 +20,10 @@ $color-primary-4: #000B0C;
   src: url(Muli.ttf)
 }
 
+.team-wiki {
+  background: white;
+}
+
 /* useful tags */
 .margin-top-50 {
   margin-top: 50px;
@@ -40,6 +44,11 @@ $color-primary-4: #000B0C;
   font-size: 30px;
 }
 
+.invites-index-page {
+  background: white;
+  padding: 25px;
+}
+
 /* body */
 
 body {
@@ -48,9 +57,14 @@ body {
   border: 0;
 }
 
+#wrap {
+  min-height: 600px;
+}
+
 /* index page */
 
 .index-page {
+  background: white;
   .row {
     padding: 100px;
   }
@@ -124,15 +138,13 @@ ul.pagination {
 
 /* content */
 .content {
-  background: white;
+  // background: white;
   margin-left: 10%;
   margin-right: 10%;
   border: 1px solid #fff;
-
+  background: rgba(#dfdfdf, 0.78);
   padding-top: 25px;
   padding: 5px;
-
-  border-radius: 30px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
 }

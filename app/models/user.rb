@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
 
   # this method checks if a user is already in a team
   def member_of?(team)
-    team.members.include?(self)
+    team.members.include?(self) || team.user == self
   end
 
   private

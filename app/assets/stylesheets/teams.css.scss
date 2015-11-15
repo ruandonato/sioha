@@ -18,6 +18,7 @@
 }
 
 .teams {
+  background: white;
   padding-top: 25px;
   padding: 5px;
 }
@@ -161,6 +162,7 @@ div.col-md-4.teams-photo {
 }
 
 .team-requirements {
+  background: white;
   padding: 25px;
 }
 
@@ -245,6 +247,8 @@ div.col-md-4.teams-photo {
 
 /* _header */
 .teams-show-page {
+  background: white;
+
   .navbar.navbar-default {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -347,4 +351,172 @@ div.col-md-4.teams-photo {
       }
     }
   }
+}
+
+.teams-show-header {
+  .navbar.navbar-default {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    background: white;
+    color: rgb(143, 153, 140);
+
+    .nav.navbar-nav {
+      li {
+        padding: 5px;
+        a {
+          font-weight: 900;
+          color: $color-primary-1;
+        }
+      }
+
+      .edit-link {
+        color: #1f1f1f;
+        text-decoration: none;
+        border-bottom: 10px solid #bbb;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: rgb(226, 112, 85);
+          border-bottom: 10px solid rgb(226, 112, 85);
+        }
+      }
+
+      .invite-link {
+        color: #1f1f1f;
+        text-decoration: none;
+        border-bottom: 10px solid #bbb;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: rgb(85, 166, 226);
+          border-bottom: 10px solid rgb(85, 166, 226);
+        }
+      }
+
+      .wiki-link {
+        color: #1f1f1f;
+        text-decoration: none;
+        border-bottom: 10px solid #bbb;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #6336b5;
+          border-bottom: 10px solid #6336b5;
+        }
+      }
+
+      .wiki-link-selected {
+        color: #6336b5;
+        text-decoration: none;
+        border-bottom: 10px solid #6336b5;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #6336b5;
+          border-bottom: 10px solid #6336b5;
+        }
+      }
+
+      .invite-link-selected {
+        color: rgb(85, 166, 226);
+        text-decoration: none;
+        border-bottom: 10px solid rgb(85, 166, 226);
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: rgb(85, 166, 226);
+          border-bottom: 10px solid rgb(85, 166, 226);
+        }
+      }
+
+      .edit-link-selected {
+        color: rgb(226, 112, 85);
+        text-decoration: none;
+        border-bottom: 10px solid rgb(226, 112, 85);
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: rgb(226, 112, 85);
+          border-bottom: 10px solid rgb(226, 112, 85);
+        }
+      }
+
+      .requirements-link {
+        color: #1f1f1f;
+        text-decoration: none;
+        border-bottom: 10px solid #bbb;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #36b5a2;
+          border-bottom: 10px solid #36b5a2;
+        }
+      }
+
+      .requirements-link-selected {
+        color: #36b5a2;
+        text-decoration: none;
+        border-bottom: 10px solid #36b5a2;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #36b5a2;
+          border-bottom: 10px solid #36b5a2;
+        }
+      }
+
+      .show-link {
+        text-decoration: none;
+        color: #1f1f1f;
+        border-bottom: 10px solid #bbb;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #59b536;
+          border-bottom: 10px solid #59b536;
+        }
+      }
+
+      .show-link-selected {
+        text-decoration: none;
+        color: #59b536;
+        border-bottom: 10px solid #59b536;;
+        margin-bottom: 25px;
+
+        &:hover {
+          background: none;
+          border-radius: 0px;
+          color: #59b536;
+          border-bottom: 10px solid #59b536;
+        }
+      }
+    }
+  }
+}
+
+.team-index-show-block-h1 {
+  display: inline;
+  color: rgb(82, 82, 82) !important;
+  font-family: Muli !important;
+
 }

@@ -48,7 +48,7 @@ class TeamsController < ApplicationController
     team_members.each do |t|
       @teams.push t.team
     end
-    @teams += Team.where(user: current_user)
+    @teams += current_user.teams
   end
 
   # action that shows a team
@@ -61,7 +61,12 @@ class TeamsController < ApplicationController
       @invites = @team.pending_invites
     else
       @invites = @team.pending_invites
-      only_members
+      if(current_user.member_of? @team)
+
+      else
+        flash[:danger] = "Você precisa ser um membro desse time."
+        redirect_to root_path
+      end
     end
   end
 

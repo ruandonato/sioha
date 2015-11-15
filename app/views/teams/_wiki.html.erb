@@ -3,6 +3,10 @@
     <li><%= link_to "Home", @team, class: "team-sidebar show-link", id: @team.id %></li>
     <li><%= link_to "Requisitos", '/teams/'+@team.id.to_s+'/team_requirements/', class: "team-sidebar requirements-link", id: @team.id, remote: true %></li>
     <li><%= link_to "Wiki", '/teams/'+@team.id.to_s+'/wiki', class: "team-sidebar wiki-link-selected", id: @team.id, remote: true %></li>
+    <% if @team.user == current_user %>
+      <li><%= link_to 'Editar', edit_team_path(id: @team.id), class: "team-sidebar edit-link" %></li>
+      <li><%= link_to 'Convidar Pessoas', "/teams/#{@team.id}/invite", class: "team-sidebar invite-link" %></li>
+    <% end %>
   </ul>
 </nav>
 

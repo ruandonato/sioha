@@ -1,9 +1,9 @@
 <div class='team-shared-block'>
   <div class='col-md-4 teams-photo'>
     <% if t.picture? %>
-      <%= image_tag t.picture.url, size: 40 %>
+      <%= image_tag t.picture.url, size: "150x100" %>
     <% else %>
-      <%= image_tag t.gravatar_url, size: 40 %>
+      <%= image_tag t.gravatar_url, size: "150x100" %>
     <% end %>
   </div>
 
