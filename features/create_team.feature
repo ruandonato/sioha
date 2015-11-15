@@ -5,9 +5,7 @@ Feature: Create a team
 		The user fills in all fields correctly for create a new team
 
 		Given that I'm a registered user
-		Given I'm on the login page
-		Given that I filled all fields correctly
-		And clicked the button Save Session
+		Given I'm logged
 		When I click the button Lista de Times
 		And click the button Criar Time
 		And fill in all fields correctly
@@ -28,9 +26,7 @@ Feature: Create a team
 		The user fills in the name field with a short name, and the rest of the fields correctly
 
 		Given that I'm a registered user
-		Given I'm on the login page
-		Given that I filled all fields correctly
-		And clicked the button Save Session
+		Given I'm logged
 		When I click the button Lista de Times
 		And click the button Criar Time
 		And fill in the name field with a short name
@@ -43,9 +39,7 @@ Feature: Create a team
 		The user fills in the description field with a short description, and the rest of the fields correctly
 
 		Given that I'm a registered user
-		Given I'm on the login page
-		Given that I filled all fields correctly
-		And clicked the button Save Session
+		Given I'm logged
 		When I click the button Lista de Times
 		And click the button Criar Time
 		And fill in the description field with a description name
