@@ -1,25 +1,25 @@
-  # File: teams_controller.rb.
+# File: teams_controller.rb.
 # Purpose: Map actions relative to team model.
 # License: GPL v3.
 # Sioha Group.
 # FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
 
 class TeamsController < ApplicationController
-  # these three methods gives access to controll teams only for logged user
+# these three methods gives access to controll teams only for logged user
   before_action :require_login, only: [:new, :create, :index, :invite]
   before_action :only_members, only: [:invite, :show_private_team]
   before_action :unique_invite, only: [:invite_member]
 
-  # action that renders the new page of the teams controller
+# action that renders the new page of the teams controller
   def new
     @team = Team.new
   end
 
-  # action that renders a page of edit teams
+# action that renders a page of edit teams
   def edit
     @team = Team.find(params[:id])
   end
-  # this method updates edit teams
+# this method updates edited teams
   def update
     @team = Team.find(params[:id])
 
@@ -31,7 +31,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  # this method creates a new team 
+# this method creates a new team 
   def create
     @team = Team.new(team_params)
     @team.user = current_user
@@ -42,7 +42,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  # action that renders the page of the teams of the logged user
+# action that renders the page of the teams of the logged user
   def myteams
     @teams = []
     team_members = TeamMember.where(user: current_user)
@@ -52,7 +52,7 @@ class TeamsController < ApplicationController
     @teams += current_user.teams
   end
 
-  # action that shows the information of a team
+# action that shows the information of a team
   def show
     @team = Team.find(params[:id])
     accepted_invites = @team.invites.where(accepted: true)
@@ -62,28 +62,28 @@ class TeamsController < ApplicationController
       @invites = @team.pending_invites
     else
       @invites = @team.pending_invites
-      if(current_user.member_of? @team)
+    if(current_user.member_of? @team)
 
-      else
+    else
         flash[:danger] = "Você precisa ser um membro desse time."
         redirect_to root_path
       end
     end
   end
 
-  # action that renders the index page of the teams controller
+# action that renders the index page of the teams controller
   def index
     @teams = Team.where(public_to_members: true)
     @teams = @teams.paginate(page: params[:page], per_page: 10)
   end
 
-  # action that renders the page to invite users to a team
+# action that renders the page to invite users to a team
   def invite
     @team = Team.find(params[:id])
     @users = User.search(params[:keyword], params[:filter])
   end
 
-  # this method sends the team's invitation to a member
+# this method sends the team's invitation to a member
   def invite_member
     @team = Team.find(params[:id])
     @user = User.find(params[:user_id])
@@ -92,7 +92,7 @@ class TeamsController < ApplicationController
     redirect_to @team
   end
 
-  # this method accepts an invitation sent
+# this method accepts an invitation sent
   def accept_invite
     @user = User.find(params[:id])
     @invite = Invite.find(params[:invite_id])
@@ -104,7 +104,7 @@ class TeamsController < ApplicationController
     redirect_to @invite.team
   end
 
-  # this method declines an invitation sent
+# this method declines an invitation sent
   def refuse_invite
     @user = User.find(params[:id])
     @invite = Invite.find(params[:invite_id])
@@ -123,7 +123,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  # this action renders the wiki page
+# this action renders the wiki page
   def wiki
     @team = Team.find(params[:id])
     respond_to do |format|
@@ -136,7 +136,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 
-  # this method passing parameters to the edit page and creating team
+# this method passing parameters to the edit page and creating team
   private
 
   def unique_invite
@@ -147,10 +147,12 @@ class TeamsController < ApplicationController
       redirect_to @team
       flash[:danger] = 'Este usuário já tem um convite pendente para este time!'
     else
-      # do nothing
+# do nothing
     end
   end
 
+
+ # checks mandatory params for create a team
   def team_params
     params.require(:team).permit(:name, :description, :user_id, :email, :picture,
                                  :public_to_members, :methodology, :wiki)
