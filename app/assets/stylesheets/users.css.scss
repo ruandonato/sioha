@@ -47,3 +47,150 @@
     font-weight: 900;
   }
 }
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.drop {
+  background: rgba(255, 255, 245, 1);
+  border: 4px solid rgba(255, 245, 235, 1);
+  border-radius: 100%;
+  box-shadow: inset -0.1em 0 2em 0.5em rgba(255, 255, 255, 0.5), 
+              inset -0.1em 0 0.5em 0 rgba(0, 0, 0, 0.8);
+  position: relative;
+  margin: 0 auto;
+  width: 15em; 
+  height: 15em;
+  overflow: hidden;
+}
+
+.drop:before,
+.drop:after {
+  content:"";
+  display:block;
+  position:absolute;
+}
+
+/* Drop */
+
+.drop:before {
+  background: rgba(167, 217, 234, 1);
+  border-radius: 100%;
+  
+  /* Drop start */
+  
+  box-shadow: 0 0 0 0.1em rgba(167, 217, 234, 0.8), 
+              0 0 0 0.15em rgba(167, 217, 234, 0.8), 
+              0 0 0 0.2em rgba(167, 227, 234, 0.8), 
+              0 0 0 0.25em rgba(167, 227, 234, 0.8), 
+              0 0 0 0.3em rgba(167, 227, 234, 0.8), 
+              0 0 0 0.35em rgba(167, 227, 234, 0.8), 
+              0 0 0 0.4em rgba(167, 227, 234, 0.8), 
+              0 0 0 0.45em rgba(167, 227, 234, 0.8), 
+              0 0 0 0.5em rgba(167, 227, 234, 0.8);
+  top: 0%; left: 50%;
+  
+  /* The "width" and "height" of the division must be smaller than the "box-shadow" total size. So we can control different variant sizes. */
+  
+  width: 0.2em; 
+  height: 0.2em;
+  animation: fall 3.5s cubic-bezier(0.5, 0, 1, 0.5) infinite;
+}
+
+/* Surface */
+
+.drop:after {
+  background: rgb(52, 152, 219);
+  background: linear-gradient(rgba(52, 255, 255, 1) 0%, rgba(52, 152, 219, 1) 10%, rgba(152, 252, 219, 1) 100%);
+  border-radius: 100% 0 50% 0;
+  left: 0; 
+  bottom: 0;
+  width: inherit; 
+  height: 3em;
+  opacity: 0.7;
+  animation: surface 3s linear infinite;
+}
+
+/* Drop animation */
+
+@keyframes fall  {
+
+  /* Drop form */
+
+  5%, 15%  {
+    box-shadow: 0 -1.4em 0 0.1em rgba(167, 217, 234, 1), 
+                0 -0.8em 0 0.15em rgba(167, 217, 234, 1), 
+                0 -0.3em 0 0.2em rgba(167, 217, 234, 1), 
+                0 -0.1em 0 0.25em rgba(167, 217, 234, 1), 
+                0 0 0 0.3em rgba(167, 217, 234, 1), 
+                0 0.2em 0 0.35em rgba(167, 217, 234, 1), 
+                0 0.4em 0 0.4em rgba(167, 217, 234, 1), 
+                0 0.6em 0 0.45em rgba(167, 217, 234, 1), 
+                0 0.8em 0 0.5em rgba(167, 217, 234, 1);
+  }
+  
+  /* Drop fall */
+  
+  16%  {
+    top: 80%;
+  }
+  
+  /* Contact surface */
+  
+  18%  {
+    top: 80%;
+    box-shadow: 1em -8em 0 0.2em rgba(177, 227, 234, 1), 
+                -2.2em -3.8em 0 0.1em rgba(177, 227, 234, 1), 
+                3em -2.85em 0 0.3em rgba(177, 227, 234, 1), 
+                -3.5em -4em 0 0.2em rgba(177, 227, 234, 1), 
+                0 0 0 0.3em rgba(177, 227, 234, 1), 
+                2em -2em 0 0.2em rgba(177, 227, 234, 1), 
+                -0.3em -3em 0 0.2em rgba(177, 227, 234, 1), 
+                0.5em -5em 0 0.35em rgba(177, 227, 234, 1), 
+                -3em -1em 0 0.3em rgba(177, 227, 234, 1);
+  }
+  
+  /* Dispersion */
+  
+  30%  {
+    top: 90%;
+    box-shadow: 1.5em 0 0 0.2em rgba(252, 252, 255, 0.1), 
+                -2em 0 0 0.15em rgba(252, 252, 255, 0.1), 
+                3em 0 0 0.2em rgba(252, 252, 255, 0.1), 
+                -2em 0 0 0.25em rgba(252, 252, 255, 0.1), 
+                0 0 0 0.2em rgba(252, 252, 255, 0.1), 
+                2.35em 0 0 0.3em rgba(252, 252, 255, 0.1), 
+                -0.5em 0 0 0.2em rgba(252, 252, 255, 0.1), 
+                1em 0 0 0.3em rgba(252, 252, 255, 0.1), 
+                -4em 0 0 0.4em rgba(252, 252, 255, 0.1);
+  }
+  
+  /* Hidden */
+  
+  40%, 100%  {
+    top: 95%;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 1.8em 0.5em 0 0.2em rgba(255, 255, 255, 0), 
+                -3em 0.5em 0 0.1em rgba(255, 255, 255, 0), 
+                4em 0.5em 0 0.1em rgba(255, 255, 255, 0), 
+                -3.5em 0.5em 0 0.1em rgba(255, 255, 255, 0), 
+                0 0 0 0.3em rgba(255, 255, 215, 0), 
+                2.45em 0.5em 0 0.1em rgba(255, 255, 255, 0), 
+                -0.8em 0.5em 0 0.2em rgba(255, 255, 255, 0), 
+                1.5em 0.5em 0 0.3em rgba(255, 255, 255, 0), 
+                -4.5em 0.5em 0 0.2em rgba(255, 255, 255, 0);
+  }
+}
+
+/* Animation of water surface */
+
+@keyframes surface  {
+  50%  {
+    border-radius: 0 75% 0 75%;
+    opacity: 0.5;
+    height: 3.5em;
+  }
+}
