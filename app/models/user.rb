@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   validate  :picture_size
   mount_uploader :picture, PictureUploader
 
+  geocoded_by :address
+  after_validation :geocode
+
   has_many :invites
   has_many :team_members
   has_many :member_of, through: :team_members, source: :team
