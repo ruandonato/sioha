@@ -5,7 +5,7 @@
 # FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
 
 class TeamsController < ApplicationController
-  # these two methods gives access to controll teams only for users
+  # these three methods gives access to controll teams only for logged user
   before_action :require_login, only: [:new, :create, :index, :invite]
   before_action :only_members, only: [:invite, :show_private_team]
   before_action :unique_invite, only: [:invite_member]
@@ -15,10 +15,11 @@ class TeamsController < ApplicationController
     @team = Team.new
   end
 
+  # action that renders a page of edit teams
   def edit
     @team = Team.find(params[:id])
   end
-
+  # this method updates edit teams
   def update
     @team = Team.find(params[:id])
 
@@ -30,7 +31,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  # this method creates a new team
+  # this method creates a new team 
   def create
     @team = Team.new(team_params)
     @team.user = current_user
@@ -41,7 +42,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  # action that renders the myteams page
+  # action that renders the page of the teams of the logged user
   def myteams
     @teams = []
     team_members = TeamMember.where(user: current_user)
@@ -51,7 +52,7 @@ class TeamsController < ApplicationController
     @teams += current_user.teams
   end
 
-  # action that shows a team
+  # action that shows the information of a team
   def show
     @team = Team.find(params[:id])
     accepted_invites = @team.invites.where(accepted: true)
@@ -122,6 +123,7 @@ class TeamsController < ApplicationController
     end
   end
 
+  # this action renders the wiki page
   def wiki
     @team = Team.find(params[:id])
     respond_to do |format|
@@ -129,6 +131,7 @@ class TeamsController < ApplicationController
     end
   end
 
+# this action permits that user logged edit a wiki
   def edit_wiki
     @team = Team.find(params[:id])
   end
