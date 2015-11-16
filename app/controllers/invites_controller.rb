@@ -5,7 +5,7 @@
 # FGA - UnB Faculdade de Engenharias do Gama - Universidade de Brasília.
 
 class InvitesController < ApplicationController
-
+# checks if the user is logged in sistem  
   before_action :require_login
 
 # action that renders the index page of the invites controller
