@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_to root_path
     else
-      flash[:danger] = 'Invalid combination.'
+      flash[:danger] = 'Combinação inválida, tente outra.'
       render 'new'
     end
   end

@@ -9,13 +9,14 @@ require 'rails_helper'
 include SessionsHelper
 
 RSpec.describe SessionsController, :type => :controller do
-
+# instantiate a user with the mandatory params
   before do 
     @user = User.new(email: 'sanjana@gmail.com', password: 'sanjana123', 
                     password_confirmation: 'sanjana123')
     @user.save
   end
 
+# if a user is logged with valid params
   describe   "POST" do
     describe '#create' do
       context "with right params" do
@@ -25,6 +26,8 @@ RSpec.describe SessionsController, :type => :controller do
           expect(response).to redirect_to(root_path)
         end
       end
+
+      # if a user is logged with invalid params
       context "with incorrect params" do
         subject { post :create, :session => { :email => '123eee', :password => 'sanjana123' }}
         it "should not change user_id" do
@@ -35,6 +38,7 @@ RSpec.describe SessionsController, :type => :controller do
     end
   end
 
+# checks if a user was deleted in database
   describe "#destroy" do
     it "should sign out the user" do
       sign_in(@user)

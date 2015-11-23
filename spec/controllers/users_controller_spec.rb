@@ -18,7 +18,7 @@ RSpec.describe UsersController, type: :controller do
                     password_confirmation: 'sanjana123')
     @another_user.save
 
-#instantiate a user with the mandatory params
+#instantiate other user with the mandatory params
     @other_user = { email: 'sanjana2@gmail.com', password: 'sanjana123',
                     password_confirmation: 'sanjana123' }
   end
