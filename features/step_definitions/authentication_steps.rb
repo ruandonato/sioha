@@ -123,7 +123,7 @@ When(/^I fill the fields with unregistered data$/) do
 end
 
 Then(/^the system should displays a message 'Invalid Combination'$/) do
-	page.should have_content ("Invalid combination.")
+	page.should have_content ("Combinação inválida, tente outra.")
 end
 
 When(/^I click the button Lista de Times$/) do
