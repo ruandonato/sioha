@@ -228,6 +228,53 @@ Then(/^the system should a message 'Email is invalid'$/) do
 	page.should have_content("Email is invalid")
 end
 
+Given(/^I'm created a team$/) do
+		
+		click_link 'Lista de Times'
+		click_link 'Criar Time'
+
+		fill_in 'team_name', :with=> "TeamTeste"
+		fill_in 'team_description', :with=> "Time feito para teste"
+		fill_in 'team_email', :with=> "Teste@teste.com"
+		page.find(:radio_button, 'team_public_to_members_true').set(true)
+		page.find(:radio_button, 'team_methodology_safe').set(true)
+
+		click_button 'Criar Time'
+
+end
+
+When(/^I click the link 'Seus Times'$/) do
+	click_link 'Seus Times'
+end
+
+When(/^click the name team$/) do
+	click_link 'TeamTeste'
+end
+
+When(/^click the button 'Editar'$/) do
+	click_link 'Editar'
+end
+
+When(/^fill in the fields correctly$/) do
+
+		fill_in 'team_name', :with=> "TeamTeste"
+		fill_in 'team_description', :with=> "Time feito para teste"
+		page.find(:radio_button, 'team_public_to_members_true').set(true)
+		page.find(:radio_button, 'team_methodology_safe').set(true)
+
+end
+
+
+When(/^click the button 'Alterar Informações'$/) do
+	click_button 'Alterar Informações'
+end
+
+Then(/^the system should display a message 'Informações alteradas'$/) do
+	page.should have_content("Informações alteradas!")
+end
+
+
+
 
 
 
