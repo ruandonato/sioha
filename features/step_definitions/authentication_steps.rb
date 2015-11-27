@@ -123,7 +123,7 @@ When(/^I fill the fields with unregistered data$/) do
 end
 
 Then(/^the system should displays a message 'Invalid Combination'$/) do
-	page.should have_content ("Invalid combination.")
+	page.should have_content ("Combinação inválida, tente outra.")
 end
 
 When(/^I click the button Lista de Times$/) do
@@ -227,6 +227,77 @@ end
 Then(/^the system should a message 'Email is invalid'$/) do
 	page.should have_content("Email is invalid")
 end
+
+Given(/^I'm created a team$/) do
+		
+		click_link 'Lista de Times'
+		click_link 'Criar Time'
+
+		fill_in 'team_name', :with=> "TeamTeste"
+		fill_in 'team_description', :with=> "Time feito para teste"
+		fill_in 'team_email', :with=> "Teste@teste.com"
+		page.find(:radio_button, 'team_public_to_members_true').set(true)
+		page.find(:radio_button, 'team_methodology_safe').set(true)
+
+		click_button 'Criar Time'
+
+end
+
+When(/^I click the link 'Seus Times'$/) do
+	click_link 'Seus Times'
+end
+
+When(/^click the name team$/) do
+	click_link 'TeamTeste'
+end
+
+When(/^click the button 'Editar'$/) do
+	click_link 'Editar'
+end
+
+When(/^fill in the fields correctly$/) do
+
+		fill_in 'team_name', :with=> "TeamTeste"
+		fill_in 'team_description', :with=> "Time feito para teste"
+		page.find(:radio_button, 'team_public_to_members_true').set(true)
+		page.find(:radio_button, 'team_methodology_safe').set(true)
+
+end
+
+
+When(/^click the button 'Alterar Informações'$/) do
+	click_button 'Alterar Informações'
+end
+
+Then(/^the system should display a message 'Informações alteradas'$/) do
+	page.should have_content("Informações alteradas!")
+end
+
+
+When(/^fill in the name team field with a short name$/) do
+		fill_in 'team_name', :with=> "Tea"
+		fill_in 'team_description', :with=> "Time feito para teste"
+		page.find(:radio_button, 'team_public_to_members_true').set(true)
+		page.find(:radio_button, 'team_methodology_safe').set(true)
+end
+
+Then(/^the system should a message 'Name is too short \(minimum is (\d+) characters\)'$/) do |arg1|
+	page.should have_content('Name is too short (minimum is 6 characters')
+end
+
+When(/^fill in the description field with a short description$/) do
+		fill_in 'team_name', :with=> "Time Teste"
+		fill_in 'team_description', :with=> "descrição"
+		page.find(:radio_button, 'team_public_to_members_true').set(true)
+		page.find(:radio_button, 'team_methodology_safe').set(true)
+end
+
+Then(/^the system should a message 'Description is too short \(minimum is (\d+) characters\)'$/) do |arg1|
+	page.should have_content('Description is too short (minimum is 10 characters')
+end
+
+
+
 
 
 
