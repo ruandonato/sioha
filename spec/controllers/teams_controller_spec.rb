@@ -7,7 +7,7 @@
 require 'rails_helper'
 
 RSpec.describe TeamsController, type: :controller do
-
+# instantiate a user and a team with the mandatory params
 before do
     @user = FactoryGirl.create(:user)
 
@@ -17,18 +17,21 @@ before do
 
   end
 
+# sign in a user
   describe "GET" do
     describe '#invite_member' do
       before do
         sign_in @user
       end
 
+      # test for create a new invite, with the correct params
       it "should create a new invite" do
         total = Invite.all.count
         get :invite_member, id: @team.id, user_id: @user.id
         expect(Invite.all.count).to eq(total+1)
       end
 
+      # test for one member has only one invete for each team
       it 'should have only one invite by team-member pair' do
         total = Invite.all.count
         get :invite_member, id: @team.id, user_id: @user.id
@@ -38,6 +41,7 @@ before do
       end
     end
 
+    # testing if a user is signed in
     describe '#new' do
       context "logged user" do
         it 'should return sucess' do
@@ -49,6 +53,7 @@ before do
       end
     end
 
+    # testing if the page is returning to index when the user sign in
     describe '#index' do
       it 'should return sucess' do
         sign_in @user
@@ -57,6 +62,7 @@ before do
       end
     end
 
+    # testing if the user can enter on his teams
     describe '#myteams' do
       it 'should return sucess' do
         sign_in @user
@@ -65,6 +71,7 @@ before do
       end
     end
 
+    # testing if the user can edit his team
     describe '#edit' do
       context 'with logged user' do
         subject { get :edit, id: @team.id }
@@ -75,6 +82,7 @@ before do
       end
     end
 
+    # testing if the user can see his teams
     describe '#show' do
       context 'with valid team' do
         subject { get :show, id: @team.id }
@@ -85,6 +93,7 @@ before do
       end
     end
 
+    # testing if the user can add a description into his team
     describe "PUT" do
       describe '#update' do
         context 'with valid params' do
@@ -96,6 +105,7 @@ before do
           end
         end
 
+        # testing if the user try to enter a description with few characters 
         context 'with invalid params' do
           subject { put :update, id: @team.id, team: { description: "an" } }
           it "should not change the description" do
