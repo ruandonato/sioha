@@ -117,6 +117,7 @@ before do
       end
     end
 
+    # cheking if the user is logged in
     describe "POST" do
       describe '#create' do
         context 'with valid params' do
@@ -124,8 +125,9 @@ before do
             sign_in @user
           end
 
+          # testing if the user can create a new team
           subject { post :create, team: { name: "SIOHATECPROGGERSzz", description: "balblaleaeabalbalbla", user: @user } }
-          it "should create a new user" do
+          it "should create a new team" do
             total = Team.all.count
             subject
             Team.all.reload
@@ -134,9 +136,10 @@ before do
           end
         end
 
+        # testing if the user can not create a team with invalid params
         context 'with unlogged user' do
           subject { post :create, team: { name: "SIOHATECPROGGERSzz", description: "balblaleaeabalbalbla", user: @user } }
-          it "should not create a new user" do
+          it "should not create a new team" do
             total = Team.all.count
             subject
             Team.all.reload
@@ -145,14 +148,16 @@ before do
           end
         end
 
+        # checking if the user is logged in
         context 'with logged user' do
           describe 'with invalid params' do
             before do
               sign_in @user
             end
 
+            # testing if the user can not create a team with invalid params
             subject { post :create, team: { name: "sioh", description: "a"*45, user: @user } }
-            it "should not create a new user" do
+            it "should not create a new team" do
               total = Team.all.count
               subject
               Team.all.reload
@@ -164,26 +169,30 @@ before do
       end
     end
 
+    # testing if the user can accept a team invite
     describe '#accept_invite' do
       before do
         @invite = Invite.new(user: @user, team: @team)
         @invite.save
       end
 
+      # testing the invites if they are changing status for accepted
       it 'should change invite do accepted' do
         get :accept_invite, invite_id: @invite.id, id: @user.id
         @invite.reload
         expect(@invite.accepted).to eq(true)
         expect(@invite.pending).to eq(false)
       end
-    end
+    end 
 
+    # testing if the user can refuse an invite
     describe '#refuse_invite' do
       before do
         @invite = Invite.new(user: @user, team: @team)
         @invite.save
       end
 
+      # testing the invites if they are changing the status for refuse
       it 'should change invite do accepted' do
         get :refuse_invite, invite_id: @invite.id, id: @user.id
         @invite.reload
