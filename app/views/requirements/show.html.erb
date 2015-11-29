@@ -18,6 +18,14 @@
     <span class='fa fa-book show-priority btn-danger requirement-comparison'>    Tema de Investimento</span>
   <% end %>
 
+  <% if @requirement.status == 'to-do' %>
+    <span class='fa fa-battery-0 show-status btn-danger'>    To Do</span>
+  <% elsif @requirement.status == 'doing' %>
+    <span class='fa fa-battery-2 show-status btn-warning'>    Doing</span>
+  <% elsif @requirement.status == 'done' %>
+    <span class='fa fa-battery-4 show-status btn-success'>    Done</span>
+  <% end %>
+
   <% if current_user && @requirement.author == current_user %>
     <center>
       <%= link_to 'Editar Requisito', edit_requirement_path(id: @requirement.id), class: 'btn btn-lg btn-info' %>

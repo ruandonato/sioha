@@ -22,6 +22,19 @@
     <%= label :priority, 'Baixa' %>
 
     <br>
+
+    <%= f.label :status, "Status:", class: "control-label" %><br>
+
+    <%= f.radio_button :status, 'to-do', checked: true %>
+    <%= label :status, 'To Do' %>
+
+    <%= f.radio_button :status, 'doing', checked: true %>
+    <%= label :status, 'Doing' %>
+
+    <%= f.radio_button :status, 'done', checked: true %>
+    <%= label :status, 'Done' %>
+
+    <br>
     <%= f.label :type, "Tipo de Requisito:", class: "control-label" %><br>
 
     <%= f.radio_button :type, 'UserStory', checked: true %>
@@ -40,5 +53,5 @@
     <center>
     <%= f.submit 'Alterar Informações', class: "btn btn-primary btn-lg" %>
     </center>
-  <% end %> 
+  <% end %>
 </div>

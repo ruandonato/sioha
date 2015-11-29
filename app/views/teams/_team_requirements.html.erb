@@ -24,6 +24,7 @@
         <td>Código</td>
         <td>Classe</td>
         <td>Prioridade</td>
+        <td>Status</td>
       </tr>
     </thead>
 
@@ -41,6 +42,13 @@
             <td><%= link_to "Baixa", '/requirements/'+b.id.to_s, class: "" %></td>
           <% else %>
             <td>?</td>
+          <% end %>
+          <% if b.status == 'to-do' %>
+            <td><%= link_to "To Do", '/requirements/'+b.id.to_s, class: "", style: "color: rgb(213, 101, 125); font-weight: 900" %></td>
+          <% elsif b.status == 'doing' %>
+            <td><%= link_to "Doing", '/requirements/'+b.id.to_s, class: "", style: "color: rgb(213, 208, 101); font-weight: 900" %></td>
+          <% elsif b.status == 'done' %>
+            <td><%= link_to "Done", '/requirements/'+b.id.to_s, class: "", style: "color: rgb(107, 213, 101); font-weight: 900" %></td>
           <% end %>
         </tr>
       <% end %>

@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014195057) do
+ActiveRecord::Schema.define(version: 20151129103107) do
 
   create_table "invites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "team_id"
     t.boolean "pending",  default: true
     t.boolean "accepted"
+  end
+
+  create_table "requirements", force: :cascade do |t|
+    t.integer  "author_id"
+    t.integer  "team_id"
+    t.string   "type"
+    t.string   "priority"
+    t.string   "description"
+    t.string   "code"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "status",      default: "to-do"
   end
 
   create_table "team_members", force: :cascade do |t|
@@ -33,6 +45,7 @@ ActiveRecord::Schema.define(version: 20151014195057) do
     t.string  "picture"
     t.boolean "public_to_members", default: false
     t.string  "methodology"
+    t.string  "wiki",              default: "*Hello! My wiki is empty. :(*"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,6 +58,8 @@ ActiveRecord::Schema.define(version: 20151014195057) do
     t.string  "password_digest"
     t.string  "picture"
     t.boolean "public_email",    default: false
+    t.float   "latitude"
+    t.float   "longitude"
   end
 
 end
