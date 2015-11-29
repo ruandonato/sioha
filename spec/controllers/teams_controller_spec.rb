@@ -17,7 +17,7 @@ before do
 
   end
 
-# sign in a user
+  # sign in a user
   describe "GET" do
     describe '#invite_member' do
       before do

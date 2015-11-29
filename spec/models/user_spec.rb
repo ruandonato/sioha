@@ -14,8 +14,7 @@ RSpec.describe User, :type => :model do
     @team = FactoryGirl.create(:team, user: @user)
   end
 
-#check if a user is a member of team
-
+  # check if a user is a member of team
   describe '#member_of?' do
     context 'with a given user being a member' do
       subject { @team.members.push @user }
@@ -26,8 +25,7 @@ RSpec.describe User, :type => :model do
     end
   end
 
-#check if a team have a pending invite for users
-
+  # check if a team have a pending invite for users
   describe '#pending_to?' do
     context 'with an invite pending' do
       before do
@@ -41,8 +39,7 @@ RSpec.describe User, :type => :model do
       end
     end
 
-  #check if a team have no pending invite for users
-
+    # check if a team have no pending invite for users
     context 'with no invite pending' do
       it 'should return nil' do
         expect(@user.pending_to?(@team)).to eq(nil)

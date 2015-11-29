@@ -9,14 +9,14 @@ require 'rails_helper'
 include SessionsHelper
 
 RSpec.describe SessionsController, :type => :controller do
-# instantiate a user with the mandatory params
+  # instantiate a user with the mandatory params
   before do 
     @user = User.new(email: 'sanjana@gmail.com', password: 'sanjana123', 
                     password_confirmation: 'sanjana123')
     @user.save
   end
 
-# if a user is logged with valid params
+  # if a user is logged with valid params
   describe   "POST" do
     describe '#create' do
       context "with right params" do
@@ -38,7 +38,7 @@ RSpec.describe SessionsController, :type => :controller do
     end
   end
 
-# checks if a user was deleted in database
+  # checks if a user was deleted in database
   describe "#destroy" do
     it "should sign out the user" do
       sign_in(@user)

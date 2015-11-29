@@ -7,7 +7,7 @@ RSpec.describe RequirementsController, type: :controller do
     @requirement = FactoryGirl.create(:requirement, team: @team, author: @user)
   end
 
-# if params of a requirement is valid redirect user a page of requirements
+  # if params of a requirement is valid redirect user a page of requirements
   describe "GET" do
     describe '#show' do
       context 'with valid params' do
@@ -18,7 +18,7 @@ RSpec.describe RequirementsController, type: :controller do
       end
     end
 
-# renders view of a new requirement of logged user
+    # renders view of a new requirement of logged user
     describe '#new' do
       it 'should return success' do
         sign_in @user
@@ -27,7 +27,7 @@ RSpec.describe RequirementsController, type: :controller do
       end
     end
 
-# renders view to edit requirement of logged user 
+    # renders view to edit requirement of logged user 
     describe '#edit' do
       it 'should return success' do
         sign_in @user
@@ -37,7 +37,7 @@ RSpec.describe RequirementsController, type: :controller do
     end
   end
 
-# checks if a total teams of user is correct to enumerates a requirement
+  # checks if a total teams of user is correct to enumerates a requirement
   describe "POST" do
     describe '#create' do
       context 'with valid params' do
@@ -53,7 +53,7 @@ RSpec.describe RequirementsController, type: :controller do
         end
       end
 
-# if total of requirements are not correct
+      # if total of requirements are not correct
       context 'with invalid params' do
         before do
           sign_in @user
@@ -69,7 +69,7 @@ RSpec.describe RequirementsController, type: :controller do
     end
   end
 
-# if update a user story in a requirement
+  # if update a user story in a requirement
   describe "PUT" do
     describe '#update' do
       before do
@@ -86,7 +86,7 @@ RSpec.describe RequirementsController, type: :controller do
       end
 
 
-# if update a feature in a requirement
+      # if update a feature in a requirement
       context 'for a feature' do
         before do
           sign_in @user
@@ -102,7 +102,7 @@ RSpec.describe RequirementsController, type: :controller do
       end
 
 
-# if update a investiment theme in a requirement
+      # if update a investiment theme in a requirement
       context 'for an investiment theme' do
         before do
           sign_in @user
@@ -118,7 +118,7 @@ RSpec.describe RequirementsController, type: :controller do
       end
 
 
-# if a requirement is invalid
+      # if a requirement is invalid
       context 'with invalid requirement type' do
         before do
           sign_in @user
