@@ -18,6 +18,10 @@
   <%= label :priority, 'Baixa' %>
 
   <br>
+
+  <%= f.date_field :deadline %>
+
+  <br>
   <%= f.label :type, "Tipo de Requisito:", class: "control-label" %><br>
 
   <%= f.radio_button :type, 'UserStory', checked: true %>

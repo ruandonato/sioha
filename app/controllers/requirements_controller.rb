@@ -72,20 +72,20 @@ class RequirementsController < ApplicationController
 
   # checks mandatory params for create a requirement
   def requirement_params
-    params.require(:requirement).permit(:code, :type, :description, :priority, :team_id, :user_id, :status)
+    params.require(:requirement).permit(:code, :type, :description, :priority, :team_id, :user_id, :status, :deadline)
   end
 
   # checks mandatory params for creat a user story
   def user_story_params
-    params.require(:user_story).permit(:code, :type, :description, :priority, :team_id, :user_id, :status)
+    params.require(:user_story).permit(:code, :type, :description, :priority, :team_id, :user_id, :status, :deadline)
   end
   # checks mandatory params for creat a feature
   def feature_params
-    params.require(:feature).permit(:code, :type, :description, :priority, :team_id, :user_id, :status)
+    params.require(:feature).permit(:code, :type, :description, :priority, :team_id, :user_id, :status, :deadline)
   end
   # checks mandatory params for creat a investiment theme
   def investiment_theme_params
-    params.require(:investiment_theme).permit(:code, :type, :description, :priority, :team_id, :user_id, :status)
+    params.require(:investiment_theme).permit(:code, :type, :description, :priority, :team_id, :user_id, :status, :deadline)
   end
 
 end

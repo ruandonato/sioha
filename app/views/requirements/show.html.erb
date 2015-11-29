@@ -26,6 +26,8 @@
     <span class='fa fa-battery-4 show-status btn-success'>    Done</span>
   <% end %>
 
+  <h1><%= Time.at((@requirement.deadline.to_time.to_i - Time.now.to_i)).day %> dia(s) faltando para a data limite.</h1>
+
   <% if current_user && @requirement.author == current_user %>
     <center>
       <%= link_to 'Editar Requisito', edit_requirement_path(id: @requirement.id), class: 'btn btn-lg btn-info' %>

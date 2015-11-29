@@ -233,5 +233,28 @@ ul.pagination {
     color: $color-primary-0;
     font-weight: 900;
   }
+}
 
+.table-hover tbody tr td, .table-hover tbody tr th .urgent{
+  .urgent-to-do {
+    background: blue;
+  }
+}
+
+.table-hover tbody tr:hover .urgent {
+  background-color: rgb(222, 123, 129);
+  color: white;
+  a {
+    color: white;
+    font-weight: 900;
+    .urgent-to-do {
+      color: black;
+    }
+  }
+
+  a.urgent-to-do {
+    background: black;
+    font-weight: 900;
+    border: 1px solid #bbb;
+  }
 }

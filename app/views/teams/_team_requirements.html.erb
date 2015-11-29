@@ -30,8 +30,18 @@
 
     <tbody>
       <% @team.requirements.each do |b| %>
-        <tr>
-          <td><%= link_to b.description, '/requirements/'+b.id.to_s, class: "" %></td>
+        <% if b.deadline.day <= Time.now.day %>
+          <% c = "urgent" %>
+          <% j = "text-decoration: line-through;" %>
+          <% if b.status != 'done' %>
+            <% j += "color: red;" %>
+          <% end %>
+        <% else %>
+          <% c = "" %>
+          <% j = "" %>
+        <% end %>
+        <tr class="<%= c %>">
+          <td><%= link_to b.description, '/requirements/'+b.id.to_s, style: "#{j}" %></td>
           <td><%= link_to b.code, '#', class: "" %></td>
           <td><%= link_to b.class, '#', class: "" %></td>
           <% if b.priority == "high" %>
@@ -44,7 +54,7 @@
             <td>?</td>
           <% end %>
           <% if b.status == 'to-do' %>
-            <td><%= link_to "To Do", '/requirements/'+b.id.to_s, class: "", style: "color: rgb(213, 101, 125); font-weight: 900" %></td>
+            <td><%= link_to "To Do", '/requirements/'+b.id.to_s, class: "", style: "urgent-to-do" %></td>
           <% elsif b.status == 'doing' %>
             <td><%= link_to "Doing", '/requirements/'+b.id.to_s, class: "", style: "color: rgb(213, 208, 101); font-weight: 900" %></td>
           <% elsif b.status == 'done' %>
