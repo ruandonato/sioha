@@ -200,5 +200,4 @@ before do
         expect(@invite.pending).to eq(false)
       end
     end
-
-  end
+end
